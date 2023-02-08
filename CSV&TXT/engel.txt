@@ -1,0 +1,9 @@
+﻿Gabriel	Erzengel	7	Gesamtkoordinator Weihnachten, Leitung Einkauf
+Michael	Erzengel	6	Leitung Marketing
+Raphael	Erzengel	6	Leitung Finanzen
+Uriel	Erzengel	6	Leitung Information und Kommunikation
+Aloisius	Dienstbote	2	Lobsingen und Frohlocken
+Josef	Küchenjunge	1	Kartoffeln schälen und abwaschen
+Kai-Uwe	Werkstattmeister	4	Holzspielzeug bauen
+Karl-Heinz	Paketdienst	4	Geschenke verpacken und verladen
+Franz	Paketdienst	3	Geschenke sortieren und verladen
