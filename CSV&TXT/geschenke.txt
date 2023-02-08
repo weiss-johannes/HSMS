@@ -1,0 +1,7 @@
+﻿LG-234	Lego-Eisenbahn	180.5	80	80	20	8	15
+DU-111	Duplo-Eisenbahn	49.99	50	40	15	5	10
+HZ-787	Holzeisenbahn	63.80	100	80	30	4	3
+PU-878	Puppe	34.70	25	15	10	5	25
+PU-898	Puppe	45.90	28	20	14	8	20
+AU-020	Auto (Plastik)	12.20	20	10	10	3	35
+AU-030	Auto (Metall)	23.90	15	8	7	9	45
