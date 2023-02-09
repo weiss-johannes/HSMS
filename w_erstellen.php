@@ -13,20 +13,7 @@
 
 <?php
 
-    mysqli_init();
-
-    mysqli_connect($link,"root","");
-
-    mysqli_options($link, MYSQLI_INIT_COMMAND, 'SET NAMES \'utf8\'');
-
-    $fall = "DROP DATABASE IF EXISTS weihnachten";
-    mysqli_query($link,$fall);
-
-    $erstData = "CREATE DATABASE weihnachten IF NOT EXISTS";
-    if(mysqli_query($link,$erst))
-    {
-        echo "<h2>(•_•) Erstellt (•_•)</h2>";
-    }
+    include "db_in_pruefung.php";
 
     $connect="USE weihnachten";
     if(mysqli_query($link,$connect))
