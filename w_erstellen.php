@@ -21,6 +21,15 @@
         echo "<h2>ಠ_ಠVerbindung zur Datenbank erstelltಠ_ಠ</h2>";
     }
 
+    $drop="DROP TABLE IF EXISTS engel ";
+    mysqli_query($link,$drop);
+
+    $drop="DROP TABLE IF EXISTS spielzeug";
+    mysqli_query($link,$drop);
+
+    $drop="DROP TABLE IF EXISTS kinder";
+    mysqli_query($link,$drop);
+
     $erstEngel='CREATE TABLE IF NOT EXISTS engel
         (
             e_name varchar(20) NOT NULL,
@@ -55,7 +64,7 @@
 
     $erstKind='CREATE TABLE IF NOT EXISTS kinder
         (
-            knr int(10) AUTO INCREMENT
+            knr int(10) AUTO_INCREMENT,
             k_name varchar(30) NOT NULL,
             vorname varchar(30) NOT NULL,
             wohnort varchar(50) NOT NULL,
@@ -68,6 +77,10 @@
     if(mysqli_query($link,$erstKind))
     {
         echo "<h2>¯\_(ツ)_/¯MEINE SIND SIE NICHT¯\_(ツ)_/¯</h2>";
+    }
+    else
+    {
+        echo "Falsche Kinder";
     }
 
 
