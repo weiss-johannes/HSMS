@@ -30,7 +30,7 @@
 
     $csvName="./CSV&TXT/engel.csv";
     $csvDatei=fopen($csvName,'r');
-    
+
     while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
         $num = count($data);
 
@@ -65,8 +65,27 @@
 
     // $line=fgetcsv($csvDatei,300,';');
     
-    
+    $alterEng="ALTER TABLE engel MODIFY dienstgrad varchar(5)";
+    if(mysqli_query($link,$alterEng))
+    {
+        echo "<hr>Typ anders<hr>";
+    }
+    else
+    {
+        echo "<hr>Typ wechselt nicht<hr>";
 
+    }
+
+    $updateEng="UPDATE engel SET dienstgrad = CONCAT(dienstgrad,'(m)')";
+    if(mysqli_query($link,$updateEng))
+    {
+        echo "<hr>Alles männer hier<hr>";
+    }
+    else
+    {
+        echo "<hr>Nicht ganz so männlich<hr>";
+
+    }
 
 
 
