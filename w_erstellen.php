@@ -33,11 +33,15 @@
     $erstEngel='CREATE TABLE IF NOT EXISTS engel
         (
             e_name varchar(20) NOT NULL,
-            funktion varchar(10) NOT NULL,
+            erzengel enum("Erzengel","Engel") DEFAULT "Engel",
             dienstgrad smallint(1) DEFAULT 1,
+            funktion varchar(10) NOT NULL,
             aufgabe varchar(500),
             PRIMARY KEY (e_name)            
         )';
+
+        // IN CSV e_name;Erzengel;dienstgrad;funktion;aufgabe 
+        // bei Gabriel gesamt leiter weihnachten ohne ;
 
     if(mysqli_query($link,$erstEngel))
     {
@@ -57,6 +61,8 @@
             PRIMARY KEY (id)            
         )';
 
+        // IN CSV id;bez;wert;laenge;breite;hoehe;m_alter;anzahl
+
     if(mysqli_query($link,$erstSpiel))
     {
         echo "<h2>(⊙_⊙;) EINFACH SPIELZEUG-MACHER (⊙_⊙;)</h2>";
@@ -73,6 +79,8 @@
             charakter smallint(1),
             PRIMARY KEY (knr)            
         )';
+
+        // IN CSV knr;k_name;vorname;wohnort;geschlecht;gebdat;charakter
 
     if(mysqli_query($link,$erstKind))
     {
