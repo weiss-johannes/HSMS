@@ -13,7 +13,7 @@
 
 <?php
 
-    mysqli_init();
+    $link = mysqli_init();
 
     mysqli_connect($link,"root","");
 
@@ -34,7 +34,12 @@
         echo "<h2>ಠ_ಠVerbindung zur Datenbank erstelltಠ_ಠ</h2>";
     }
 
-
+    // /* Verbindung mit der Datenbank herstellen */
+    // if(!mysqli_select_db($link, "weihnachten")){
+    //     echo ("<h2>Konnte Verbindung zur Datenbank <b>weihnachten</b> nicht herstellen<br></h2>");
+    // } else {
+    //     echo "<h2>ಠ_ಠ Verbindung zur Datenbank <b>weihnachten</b> erstellt ಠ_ಠ</h2>";
+    // }
 
 ?>
 
