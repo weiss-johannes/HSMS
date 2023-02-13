@@ -1,0 +1,11 @@
+@media (prefers-color-scheme: dark) {
+   html{
+    data-bs-theme: dark
+   } 
+}
+
+@media (prefers-color-scheme: light) {
+    html{
+        data-bs-theme: light
+    }
+}
