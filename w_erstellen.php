@@ -13,7 +13,7 @@
 
 <?php
 
-    include "db_in_pruefung.php";
+    include "db_init.php";
 
     /* Verbindung mit der Datenbank herstellen */
     if(!mysqli_select_db($link, "weihnachten")){
@@ -102,7 +102,7 @@
 
 ?>
 
-
+<a href="w_eintragen.php">Zu eintragen</a>
 
 </body>
 </html>

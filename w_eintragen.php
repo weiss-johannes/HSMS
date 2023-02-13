@@ -13,18 +13,18 @@
 
 <?php
 
-    include "db_in_pruefung.php";
+    include "db_init.php";
 
     echo "<hr>Alles ok bei dir?<hr>";
 
-    // $einEngel="LOAD DATA INFILE './CSV&TXT/engel.csv' INTO TABLE engel";
-    // if(mysqli_query($link,$einEngel))
+    // $einengel="load data infile './csv&txt/engel.csv' into table engel";
+    // if(mysqli_query($link,$einengel))
     // {
-    //     echo "Erstmall drin<br>";
+    //     echo "erstmall drin<br>";
     // }
     // else
     // {
-    //     echo "Nicht ganz richtig<br>";
+    //     echo "nicht ganz richtig<br>";
     // }
 
 
@@ -51,13 +51,9 @@
         }
 
         if(mysqli_query($link,$erstell))
-        {
-            echo "<hr>Zeile ist dring<hr>";
-        }
-        else 
-        {
+            echo "<hr>Engel ist dring<hr>";
+        else
             echo "<hr>Falsch beim Einfuegen<hr>";
-        }
 
     }
 
@@ -66,32 +62,78 @@
     // $line=fgetcsv($csvDatei,300,';');
     
     $alterEng="ALTER TABLE engel MODIFY dienstgrad varchar(5)";
+
     if(mysqli_query($link,$alterEng))
-    {
         echo "<hr>Typ anders<hr>";
-    }
     else
-    {
         echo "<hr>Typ wechselt nicht<hr>";
 
-    }
-
     $updateEng="UPDATE engel SET dienstgrad = CONCAT(dienstgrad,'(m)')";
+
     if(mysqli_query($link,$updateEng))
-    {
         echo "<hr>Alles männer hier<hr>";
-    }
     else
-    {
         echo "<hr>Nicht ganz so männlich<hr>";
 
+    $insertEng="INSERT INTO engel (e_name,dienstgrad,funktion,aufgabe) VALUES
+        ('Antonia','5(w)','Köchin','Kochen'),('Miranda','3(w)','Reinigungskraft','Böden wischen, Staub saugen'),
+        ('Anastasia','6(w)','Chef-Sekretärin','Korrespondenz, Repräsentationsaufgaben'),('Magdalena','4(w)','Sekretärin','Büroarbeiten erledigen'),
+        ('Notburga','2(w)','Gärtnerin','Gemüse pflegen')";
+
+    if(mysqli_query($link,$insertEng))
+        echo "<hr>Erfolgreich Weiblich drin<hr>";
+    else
+        echo "<hr>Keine Weiblich drin<hr>";
+
+
+    // $einkind="load data infile './csv&txt/empfaenger.csv' into table kinder";
+    // if(mysqli_query($link,$einkind))
+    //     echo "erstmall kinder drin<br>";
+    // else            
+    //     echo "nicht kinder richtig<br>";
+
+    $csvName="./CSV&TXT/empfaenger.csv";
+    $csvDatei=fopen($csvName,'r');
+
+    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+
+        $erstell="INSERT INTO kinder VALUES(
+            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
+
+        if(mysqli_query($link,$erstell))
+            echo "<hr>Kind ist dring<hr>";
+        else
+            echo "<hr>Falsch beim Einfuegen<hr>";
+
     }
 
+    $csvName="./CSV&TXT/geschenke.csv";
+    $csvDatei=fopen($csvName,'r');
 
+    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+
+        $erstell="INSERT INTO spielzeug VALUES(
+            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\",\"$data[7]\")";
+
+        if(mysqli_query($link,$erstell))
+            echo "<hr>Spielzeug ist dring<hr>";
+        else
+            echo "<hr>Falsch beim Einfuegen<hr>";
+
+    }
+    
+
+    // $eingeschenk="LOAD DATA INFILE './csv&txt/geschenke.csv' into table spielzeug";
+    // if(mysqli_query($link,$eingeschenk))
+    //     echo "erstmall spielzeug drin<br>";
+    // else            
+    //     echo "nicht spielzeug richtig<br>";
+
+    
 
 ?>
 
-
+<a href="w_erstellen.php">Zu erstellen</a>
 
 </body>
 </html>
