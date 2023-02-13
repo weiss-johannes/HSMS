@@ -8,13 +8,14 @@
     <title>🕊Engel</title>
 </head>
 <body>
+
 <?php
 
-require("./db_in_pruefung.php");
+require("./db_init.php");
 
 $query="SELECT * FROM engel WHERE dienstgrad > 5";
 
-mysqli_query($link, $query);
+$result = mysqli_query($link, $query);
 
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -25,12 +26,34 @@ if (mysqli_num_rows($result) > 0) {
     echo "0 ergebnisse";
   }
 
-$query = "ALTER TABLE engel ADD urlaubstage int; 
+$query = "ALTER TABLE engel ADD urlaubstage int"; 
+
+mysqli_query($link, $query);
+
+$query = "ALTER TABLE engel ADD abmahnung varchar(255)"; 
+
+mysqli_query($link, $query);
+
+?>
+
+<form method="post" action="abmahnung.php">
+<label for="e_name">Name Engel</label>
+<input type="text" name="e_name" id="e_name">
+<label for="grund_abmahung">Grund der abmahnung</label>
+<input type="text" name="grund_abmahung" id="grund_abmahung">
+<input type="submit" value="Eintragen">
+<input type="reset" value="Zurücksetzen">
+</form>
+
+<?php
+
+$query = "ALTER TABLE engel ADD geruechte varchar(255)";  
 
 mysqli_query($link, $query);
 
 
+
 ?> 
+
 </body>
 </html>
-
