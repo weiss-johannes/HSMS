@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-    // require("./w_erstellen.php");
+    require("./db_in_pruefung.php");
 
     /* **************************** Aufgabe 4a **************************** */
     $sql = "SELECT * FROM spielzeug";
