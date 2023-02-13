@@ -48,7 +48,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item text-danger" href="index.php?action=erstellen">Datenbank erstellen</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Daten eintragen</a></li>
+                  <li><a class="dropdown-item" href="index.php?action=eintragen">Daten eintragen</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
@@ -65,7 +65,7 @@ if ($action == 'home') {
 }
 
 if ($action == 'engel') {
-    echo "engel";
+  require("./w_engel.php");
 }
 
 if ($action == 'spielzeug') {
@@ -73,7 +73,7 @@ if ($action == 'spielzeug') {
 }
 
 if ($action == 'eintragen') {
-    echo "eintragen";
+  require("./w_eintragen.php");
 }
 
 if ($action == 'uebersicht') {
