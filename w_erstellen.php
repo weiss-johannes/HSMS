@@ -13,7 +13,7 @@
 
 <?php
 
-    include "db_in_pruefung.php";
+    include "db_init.php";
 
     $connect="USE weihnachten";
     if(mysqli_query($link,$connect))
