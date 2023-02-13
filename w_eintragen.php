@@ -15,6 +15,26 @@
 
     include "db_init.php";
 
+    function normalEintragen($Datei_name,$Tabllen_name)
+    {
+        require "db_init.php";
+
+        $csvDatei=fopen($Datei_name,'r');
+
+        while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+
+            $erstell="INSERT INTO $Tabllen_name VALUES(
+                \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
+    
+            if(mysqli_query($link,$erstell))
+                echo "<hr>$Tabllen_name ist drin<hr>";
+            else
+                echo "<hr>Falsch beim Einfuegen<hr>";
+        }
+
+        fclose($csvDatei);
+    }
+
     echo "<hr>Alles ok bei dir?<hr>";
 
     // $einengel="load data infile './csv&txt/engel.csv' into table engel";
@@ -92,35 +112,10 @@
     // else            
     //     echo "nicht kinder richtig<br>";
 
-    $csvName="./CSV&TXT/empfaenger.csv";
-    $csvDatei=fopen($csvName,'r');
 
-    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+    normalEintragen("./CSV&TXT/geschenke.csv",'spielzeug');
+    normalEintragen("./CSV&TXT/empfaenger.csv",'kinder');
 
-        $erstell="INSERT INTO kinder VALUES(
-            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
-
-        if(mysqli_query($link,$erstell))
-            echo "<hr>Kind ist dring<hr>";
-        else
-            echo "<hr>Falsch beim Einfuegen<hr>";
-
-    }
-
-    $csvName="./CSV&TXT/geschenke.csv";
-    $csvDatei=fopen($csvName,'r');
-
-    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
-
-        $erstell="INSERT INTO spielzeug VALUES(
-            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\",\"$data[7]\")";
-
-        if(mysqli_query($link,$erstell))
-            echo "<hr>Spielzeug ist dring<hr>";
-        else
-            echo "<hr>Falsch beim Einfuegen<hr>";
-
-    }
     
 
     // $eingeschenk="LOAD DATA INFILE './csv&txt/geschenke.csv' into table spielzeug";
