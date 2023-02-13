@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de" data-bs-theme="dark" >
+<html lang="de" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/bootstrap.bundle.js"></script>
   </head>
-  <!-- CURSOR hat nicht funktioniert, weil es keine .svg datei war und das bild zu groß war -->
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0431f9;">
         <div class="container-fluid">
@@ -21,33 +20,33 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php?action=home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Engel</a>
+                <a class="nav-link" href="index.php?action=engel">Engel</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Spielzeug</a>
+                <a class="nav-link" href="index.php?action=spielzeug">Spielzeug</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Engel</a>
+                <a class="nav-link" href="index.php?action=eintragen">Eintragen</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Kinder
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item href="#">Übersicht</a></li>
+                  <li><a class="dropdown-item" href="index.php?action=uebersicht">Übersicht</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Änderungen</a></li>
+                  <li><a class="dropdown-item" href="index.php?action=aenderungen">Änderungen</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-danger href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Einstellungen
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item text-danger href="#">Datenbank erstellen</a></li>
+                  <li><a class="dropdown-item text-danger" href="index.php?action=erstellen">Datenbank erstellen</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Daten eintragen</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -58,5 +57,36 @@
           </div>
         </div>
       </nav>
+<?php
+$action = @$_GET['action'];
+
+if ($action == 'home') {
+    echo "home";
+}
+
+if ($action == 'engel') {
+    echo "engel";
+}
+
+if ($action == 'spielzeug') {
+  require("./w_spielzeug.php");
+}
+
+if ($action == 'eintragen') {
+    echo "eintragen";
+}
+
+if ($action == 'uebersicht') {
+    echo "uebersicht";
+}
+
+if ($action == 'aenderungen') {
+    echo "aenderungen";
+}
+
+if ($action == 'erstellen') {
+  require("./w_erstellen.php");
+}
+?>
   </body>
 </html>
