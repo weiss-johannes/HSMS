@@ -135,24 +135,60 @@
         while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
             $anzahl_ges += $fetch_list['anzahl'];
         }
-        echo "<h4>Aufgabe 4c: <b class='sql-befehl'>$sql</b></h4>";
+        echo "<h4>Aufgabe 4d: <b class='sql-befehl'>$sql</b></h4>";
         echo "Anzahl der vorrätigen Spielzeuge insgesamt: <b>$anzahl_ges</b>";
     }
     
     /* **************************** Aufgabe 4e **************************** */
-    $sql = "SELECT COUNT(bez) AS bez_anzahl FROM spielzeug";
+    $sql = "SELECT m_alter, COUNT(DISTINCT bez) as bez_anzahl FROM spielzeug GROUP BY m_alter;";
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<table>
+            <th>
+                <td>Aufgabe 4e: ($anzahl) <b class='sql-befehl'>$sql</b></td>
+            </th>
+            <tr>
+                <td>bez</td>
+                <td>m_alter</td>
+            </tr>";
         $fetch = mysqli_query($link, $sql);
-        $bez_anzahl_ges = 0;
-        while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
-            $bez_anzahl_ges = $fetch_list['bez_anzahl'];
+        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+            echo "<tr>
+                    <td>$fetch_list[bez_anzahl]</td>
+                    <td>$fetch_list[m_alter]</td>
+                </tr>";  
         }
-        echo "<h4>Aufgabe 4e: <b class='sql-befehl'>$sql</b></h4>";
-        echo "Anzahl der verschiedenen Bezeichnungen insgesamt: <b>$bez_anzahl_ges</b>";
+        echo "</table>";
+        echo "</div>";
+    }
+    
+    /* **************************** Aufgabe 4f **************************** */
+    $sql = "SELECT m_alter, COUNT(anzahl) as anzahl FROM spielzeug GROUP BY m_alter;";
+    $erg = mysqli_query($link, $sql);
+    $anzahl = mysqli_affected_rows($link);
+    if ($anzahl == 0) {
+        echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+    } else {
+        echo "<table>
+            <th>
+                <td>Aufgabe 4f: ($anzahl) <b class='sql-befehl'>$sql</b></td>
+            </th>
+            <tr>
+                <td>anzahl</td>
+                <td>m_alter</td>
+            </tr>";
+        $fetch = mysqli_query($link, $sql);
+        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+            echo "<tr>
+                    <td>$fetch_list[anzahl]</td>
+                    <td>$fetch_list[m_alter]</td>
+                </tr>";  
+        }
+        echo "</table>";
+        echo "</div>";
     }
 ?>
 </body>
