@@ -6,6 +6,7 @@
     <title>Holy Sky Managment System</title>
     <link rel="shortcut icon" href="./img/logo/favicon-invert.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bootstrap.bundle.js"></script>
   </head>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
@@ -50,48 +51,50 @@
           </div>
         </div>
       </nav>
-<?php
-$action = @$_GET['action'];
+      <section>
+        <?php
+        $action = @$_GET['action'];
 
-if ($action == 'home') {
-    echo "home";
-}
+        if ($action == 'home') {
+            echo "home";
+        }
 
-if ($action == 'engel') {
-  require("./w_engel.php");
-}
+        if ($action == 'engel') {
+          require("./w_engel.php");
+        }
 
-if ($action == 'spielzeug') {
-  require("./w_spielzeug.php");
-}
+        if ($action == 'spielzeug') {
+          require("./w_spielzeug.php");
+        }
 
-if ($action == 'eintragen') {
-  require("./w_eintragen.php");
-}
+        if ($action == 'eintragen') {
+          require("./w_eintragen.php");
+        }
 
-if ($action == 'uebersicht') {
-    echo "uebersicht";
-}
+        if ($action == 'uebersicht') {
+            echo "uebersicht";
+        }
 
-if ($action == 'aenderungen') {
-    echo "aenderungen";
-}
+        if ($action == 'aenderungen') {
+            echo "aenderungen";
+        }
 
-if ($action == 'erstellen') {
-  require("./w_erstellen.php");
-}
+        if ($action == 'erstellen') {
+          require("./w_erstellen.php");
+        }
 
-if ($action == 'something') {
-  echo "<style>
-          body {
-            animation: background-color-change 0.5s infinite;
-          }
+        if ($action == 'something') {
+          echo "<style>
+                  body {
+                    animation: background-color-change 0.1s infinite;
+                  }
 
-          @keyframes background-color-change {
-            50% { background-color: red; }
-          }
-        </style>";
-}
-?>
+                  @keyframes background-color-change {
+                    50% { background-color: red; }
+                  }
+                </style>";
+        }
+        ?>
+      </section>
   </body>
 </html>

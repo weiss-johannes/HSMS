@@ -1,0 +1,18 @@
+
+section, table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    margin: 20px auto;
+}
+
+th {
+    background-color: #3d3d3d;
+}
+
+.sql-befehl {
+    font-size: large;
+    font-family: monospace;
+}
