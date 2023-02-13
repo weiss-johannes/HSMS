@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo/favicon-invert.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Alles f&uuml;r die Clicks</title>
 </head>
 <body>
@@ -101,8 +103,9 @@
     // }
 
 ?>
-
-<a href="w_eintragen.php">Zu eintragen</a>
+<button class="btn">
+    <a href="index.php?action=eintragen">Zu eintragen</a>
+</button>
 
 </body>
 </html>
