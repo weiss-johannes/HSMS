@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-    require("./db_in_pruefung.php");
+    require("./db_init.php");
 
     /* **************************** Aufgabe 4a **************************** */
     $sql = "SELECT * FROM spielzeug";
