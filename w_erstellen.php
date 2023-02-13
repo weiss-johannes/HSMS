@@ -101,7 +101,7 @@
 
 ?>
 
-
+<a href="w_eintragen.php">Zu eintragen</a>
 
 </body>
 </html>

@@ -25,7 +25,8 @@ mysqli_options($link,MYSQLI_INIT_COMMAND,'SET NAMES \'utf8\'');
     }
 
 $db_erstell="CREATE DATABASE IF NOT EXISTS $dbase";
-    mysqli_query($link,$db_erstell);
+    if(mysqli_query($link,$db_erstell))
+        //echo "Datenbank wurde erstellt, da noch nicht vorhanden<br>";
 
 /* Verbindung mit der Datenbank herstellen */
     if(!$db_verb=mysqli_select_db($link, $dbase)){
