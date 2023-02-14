@@ -13,27 +13,7 @@
 
 <?php
 
-    include "db_init.php";
-
-    function normalEintragen($Datei_name,$Tabllen_name)
-    {
-        require "db_init.php";
-
-        $csvDatei=fopen($Datei_name,'r');
-
-        while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
-
-            $erstell="INSERT INTO $Tabllen_name VALUES(
-                \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
-    
-            if(mysqli_query($link,$erstell))
-                echo "<hr>$Tabllen_name ist drin<hr>";
-            else
-                echo "<hr>Falsch beim Einfuegen<hr>";
-        }
-
-        fclose($csvDatei);
-    }
+    include "./db_init.php";
 
     echo "<hr>Alles ok bei dir?<hr>";
 
@@ -113,8 +93,42 @@
     //     echo "nicht kinder richtig<br>";
 
 
-    normalEintragen("./CSV&TXT/geschenke.csv",'spielzeug');
-    normalEintragen("./CSV&TXT/empfaenger.csv",'kinder');
+    $Datei_name="./CSV&TXT/geschenke.csv";
+    $Tabllen_name='spielzeug';
+
+    $csvDatei=fopen($Datei_name,'r');
+
+    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+
+        $erstell="INSERT INTO $Tabllen_name VALUES(
+            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\",\"$data[7]\")";
+    
+        if(mysqli_query($link,$erstell))
+            echo "<hr>$Tabllen_name ist drin<hr>";
+        else
+            echo "<hr>Falsch beim Einfuegen<hr>";
+        }
+
+        fclose($csvDatei);
+
+        $Datei_name="./CSV&TXT/empfaenger.csv";
+        $Tabllen_name='kinder';
+    
+        $csvDatei=fopen($Datei_name,'r');
+    
+        while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+    
+            $erstell="INSERT INTO $Tabllen_name VALUES(
+                \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
+        
+            if(mysqli_query($link,$erstell))
+                echo "<hr>$Tabllen_name ist drin<hr>";
+            else
+                echo "<hr>Falsch beim Einfuegen<hr>";
+            }
+    
+            fclose($csvDatei);
+
 
     
 

@@ -73,7 +73,7 @@
         }
 
         if ($action == 'uebersicht') {
-            echo "uebersicht";
+          require("./w_kinder.php");
         }
 
         if ($action == 'aenderungen') {
