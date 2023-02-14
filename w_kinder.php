@@ -25,10 +25,8 @@
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     else 
     {
+        echo "<h3>Aufgabe 5a: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-                <th>
-                    <td>Aufgabe 5a: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-                </th>
                 <tr>
                     <td>id</td>
                     <td>Nachname</td>
@@ -214,7 +212,7 @@
 
     echo "<hr><hr>";
 
-    $updUnt="UPDATE kinder SET charakter=(charakter+1) WHERE wohnort='Unterdupfing'";
+    $updUnt="UPDATE kinder SET charakter=5 WHERE wohnort='Unterdupfing'";
 
     if(mysqli_query($link,$updUnt))
     {
