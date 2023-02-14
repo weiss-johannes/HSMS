@@ -2,12 +2,12 @@
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="./css/loginstyle.css">
   </head>
   <body>
     <div class="center">
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <form method="post">
         <div class="txt_field">
           <input type="text" required>
@@ -19,10 +19,8 @@
           <span></span>
           <label>Password</label>
         </div>
-        <div class="pass">Forgot Password?</div>
-        <input type="submit" value="Login">
+        <input type="submit" value="Signup">
         <div class="signup_link">
-          Not a member? <a href="signup.php">Signup</a>
         </div>
       </form>
     </div>
