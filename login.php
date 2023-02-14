@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <title>HSMS | login</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            width: 400px;
-            margin: 0 auto;
-            margin-top: 10%;
-            background-color: #212529;
-            border: 1px solid white;
-        }
-        
-        div {
-            margin: 0 auto;
-            width: fit-content;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <input type="text" name="name" placeholder="Name">
-        <br>
-        <input type="password" name="pwd" placeholder="Passwort">
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/loginstyle.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post">
+        <div class="txt_field">
+          <input type="text" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        <input type="submit" value="Login">
+        <div class="signup_link">
+          Not a member? <a href="#">Signup</a>
+        </div>
+      </form>
     </div>
-</body>
+
+  </body>
 </html>
