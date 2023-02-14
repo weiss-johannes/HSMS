@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>🐣Alle meine Kinder schwimmen in dem SEE, SCHwimme iN DEm SeE, HÄndChen aus DEM waSser, Schwänze in die hoe🐤</title>
 </head>
 <body>
@@ -37,8 +38,7 @@
                     <td>Geburtsdatum</td>
                     <td>Charakter</td>
                 </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[knr]</td>
                     <td>$fetch_list[k_name]</td>

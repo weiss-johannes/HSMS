@@ -29,8 +29,7 @@
                     <td>m_alter</td>
                     <td>anzahl</td>
                 </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[id]</td>
                     <td>$fetch_list[bez]</td>
@@ -65,8 +64,7 @@
                     <td>m_alter</td>
                     <td>anzahl</td>
                 </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[id]</td>
                     <td>$fetch_list[bez]</td>
@@ -98,8 +96,7 @@
                     <td>m_alter</td>
                     <td>anzahl</td>
                 </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[id]</td>
                     <td>$fetch_list[bez]</td>
@@ -124,8 +121,7 @@
                 <tr>
                     <td>anzahl</td>
                 </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
+        while($fetch_anzahl = mysqli_fetch_assoc($erg)) {
             echo '<tr>
                     <td>'.$fetch_anzahl['anzahl'].'</td>
                 </tr>
@@ -146,8 +142,7 @@
                 <td>bez</td>
                 <td>m_alter</td>
             </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[bez_anzahl]</td>
                     <td>$fetch_list[m_alter]</td>
@@ -170,8 +165,7 @@
                 <td>anzahl</td>
                 <td>m_alter</td>
             </tr>";
-        $fetch = mysqli_query($link, $sql);
-        while($fetch_list = mysqli_fetch_assoc($fetch)) {
+        while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
                     <td>$fetch_list[anzahl]</td>
                     <td>$fetch_list[m_alter]</td>
