@@ -18,6 +18,7 @@
     $anzahl = mysqli_affected_rows($link);
 
     $counterKinder=0;
+    $counterKinderSpäter=0;
 
     if ($anzahl == 0)
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
@@ -48,6 +49,7 @@
                     <td>$fetch_list[charakter]</td>
                 </tr>";  
             $counterKinder++;
+            $counterKinderSpäter++;
         }
         echo "</table>";
         echo "</div>";
@@ -105,7 +107,6 @@
                     $fetch_list[gebdat],
                     $fetch_list[charakter]
                 <br>";  
-            $counterKinder++;
         }
         
     echo "<hr><hr>";
@@ -128,7 +129,6 @@
                     $fetch_list[gebdat],
                     $fetch_list[charakter]
                 <br>";  
-            $counterKinder++;
         }
 
     echo "<hr><hr>";
@@ -151,48 +151,89 @@
                     $fetch_list[gebdat],
                     $fetch_list[charakter]
                 <br>";  
-            $counterKinder++;
         }
 
 
     echo "<hr><hr>";
 
-    $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=1;";
-    if($erg=mysqli_query($link,$anzCharakter))
+    for($i=1;$i<6;$i++)
     {
-        $fetch_list = mysqli_fetch_assoc($erg);
-        echo "Anzahl der Kinder mit Charakter 1: ".$fetch_list['COUNT(charakter)']."<br>";
-        
-    }
-    $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=2;";
-    if($erg=mysqli_query($link,$anzCharakter))
-    {
-        $fetch_list = mysqli_fetch_assoc($erg);
-        echo "Anzahl der Kinder mit Charakter 2: ".$fetch_list['COUNT(charakter)']."<br>";
-        
-    }
-    $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=3;";
-    if($erg=mysqli_query($link,$anzCharakter))
-    {
-        $fetch_list = mysqli_fetch_assoc($erg);
-        echo "Anzahl der Kinder mit Charakter 3: ".$fetch_list['COUNT(charakter)']."<br>";
-        
-    }
-    $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=4;";
-    if($erg=mysqli_query($link,$anzCharakter))
-    {
-        $fetch_list = mysqli_fetch_assoc($erg);
-        echo "Anzahl der Kinder mit Charakter 4: ".$fetch_list['COUNT(charakter)']."<br>";
-        
-    }
-    $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=5;";
-    if($erg=mysqli_query($link,$anzCharakter))
-    {
-        $fetch_list = mysqli_fetch_assoc($erg);
-        echo "Anzahl der Kinder mit Charakter 5: ".$fetch_list['COUNT(charakter)']."<br>";
-        
+        $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=$i;";
+        if($erg=mysqli_query($link,$anzCharakter))
+        {
+            $fetch_list = mysqli_fetch_assoc($erg);
+            echo "Anzahl der Kinder mit Charakter $i: ".$fetch_list['COUNT(charakter)']."<br>";
+            if($i==5)
+            {
+                $counterKinderSpar=$fetch_list['COUNT(charakter)'];
+            }
+        }
     }
     
+    echo "<hr><hr>";
+    
+    $counterKinderSpäter-=$counterKinderSpar;
+
+    if($counterKinderSpäter%3==1)
+    {
+        $counterKinderSpäter/=3;
+        $counterKinderSpäter+=(2/3);
+    }
+    else if($counterKinderSpäter%3==2)
+    {
+        $counterKinderSpäter/=3;
+        $counterKinderSpäter+=(1/3);
+    }
+    else
+    {
+        $counterKinderSpäter/=3;
+    }
+
+    $counterKinder-=$counterKinderSpäter;
+
+    echo "Es werden nur noch $counterKinderSpäter Engel benötigt<br>";
+    echo "Es wurden $counterKinder Engel gespart";
+    
+    echo "<hr><hr>";
+
+    $updKind="UPDATE kinder SET gebdat='2004-09-30' WHERE knr=14";
+
+    if(mysqli_query($link,$updKind))
+    {
+        echo "Kind wurde ausgebessert<br>";
+    }
+
+    echo "<hr><hr>";
+
+    $updFam="UPDATE kinder SET wohnort='Traunstein' WHERE k_name='Mayer'";
+
+    if(mysqli_query($link,$updFam))
+    {
+        echo "Familie wurde ausgebessert<br>";
+    }
+
+    echo "<hr><hr>";
+
+    $updUnt="UPDATE kinder SET charakter=(charakter+1) WHERE wohnort='Unterdupfing'";
+
+    if(mysqli_query($link,$updUnt))
+    {
+        echo "Unterdumpfing wurde ausgemerzt<br>";
+    }
+
+    echo "<hr><hr>";
+
+    $altTab="ALTER TABLE kinder ADD k_alter smallint(2)";
+
+    if(mysqli_query($link,$altTab))
+    {
+        echo "Tabelle wurde anders gemacht<br>";
+    }
+
+    echo "<hr><hr>";
+
+
+
 ?>
 
 </body>
