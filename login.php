@@ -31,12 +31,26 @@
 
 <?php
     require("./db_init.php");
+    $_POST = array_map('htmlspecialchars', $_POST);
 
-    $sql='CREATE TABLE IF NOT EXISTS login
-        (
-            username varchar(20) NOT NULL,
-            passwort varchar(20) NOT NULL,
-            PRIMARY KEY (passwort)
-        )';
+    $sql = "SELECT * FROM login";
     $erg = mysqli_query($link, $sql);
+    $anzahl = mysqli_affected_rows($link);
+    if ($anzahl == 0) {
+        echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+    } else {
+        echo "<table>
+                <tr>
+                    <td>Username</td>
+                    <td>Password</td>
+                </tr>";
+        $fetch = mysqli_query($link, $sql);
+        while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
+        echo '<tr>
+            <td>'.$fetch_anzahl['username'].'</td>
+            <td>'.$fetch_anzahl['password'].'</td>
+        </tr>
+        </table>';
+        }
+    }
 ?>
