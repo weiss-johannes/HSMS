@@ -44,6 +44,7 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="index.php?action=eintragen">Daten eintragen</a></li>
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
+                  <li><a class="dropdown-item" href="login.php">login</a></li>
                 </ul>
               </li>
               <li class="nav-item">
