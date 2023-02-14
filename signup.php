@@ -2,12 +2,12 @@
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Signup</title>
     <link rel="stylesheet" href="./css/loginstyle.css">
+    <title>Registrieren</title>
   </head>
   <body>
     <div class="center">
-      <h1>Signup</h1>
+      <h1>Registrieren</h1>
       <form method="post">
         <div class="txt_field">
           <input type="text" required>

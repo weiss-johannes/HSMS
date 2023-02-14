@@ -5,29 +5,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="./css/loginstyle.css">
   </head>
-  <body>
-    <div class="center">
-      <h1>Login</h1>
-      <form action="./login.php" method="post">
-        <div class="txt_field">
-          <input type="text" name="username" required>
-          <span></span>
-          <label>Username</label>
-        </div>
-        <div class="txt_field">
-          <input type="password" name="password" required>
-          <span></span>
-          <label>Password</label>
-        </div>
-        <div class="pass">Forgot Password?</div>
-        <input type="submit" value="Login">
-        <div class="signup_link">
-          Not a member? <a href="signup.php">Signup</a>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
 
 <?php
     require("./db_init.php");
@@ -39,7 +16,7 @@
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
-        echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+        echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3>";
     } else {
         echo "<table>
                 <tr>
@@ -56,37 +33,46 @@
         echo '</table>';
     }
 
-	if (isset($_POST['Login'])) {
+	if (isset($_POST['anmelden'])) {
 
 		/************** Abfrage ob überhaupt was übergeben wurde **************/
 		if ($password != "" && $username != "") {
 
-			/*** Auswahl ob ein Schüler mit dem Namen und Password existiert **/
-			$select_login = "SELECT username, password from login WHERE username = '$username' and password = '$password'";
-			$qry_select_login = mysqli_query($link, $select_login) or die("Error: " . mysqli_error($link));
+			$abfragee = "SELECT * FROM login";
+      $ergebniss = mysqli_query($link, $abfragee);
 
-      $anzahl = mysqli_affected_rows($link);
-      if ($anzahl != 0) {
-        echo "<h3 style='color: red;'>Falscher Username oder Passwort</h3><br>";
-      } else {
-        echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
-        $sql = "INSERT INTO login ('username', 'password') VALUES ('admin', 'admin')";
-        $erg = mysqli_query($link, $sql); 
-      }
-					
-			if (mysqli_affected_rows($link) > 0) {
-			  $check = mysqli_fetch_array($qry_select_login, MYSQLI_BOTH);
-			} else {
-        $check = 0;
-      }
-
-      /************* Setzen der Readalr-Variable, damit nur einmalige Abfrage möglich ist ***********************/
-			if ($check > 0) {
-        $select_schueler = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
-				$qry_select_schueler = mysqli_query($link, $select_schueler);
-				$fetch_select_schueler = mysqli_fetch_array($qry_select_schueler, MYSQLI_BOTH);
-        echo "Hat funktioniert";
+      while ($row = mysqli_fetch_object($ergebniss)) {
+        if ($username == $row->username and $password == $row->password) {
+          header('Location: index.php?check=true');
+        } else {
+          $check = "<h3 style='color: red;'>Falsches Passwort oder Name</h3>";
+        }
       }
     }
   }
 ?>
+
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form action="./login.php" method="post">
+        <div class="txt_field">
+          <input type="text" name="username" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required>
+          <span></span>
+          <label>Passwort</label>
+        </div>
+        <div class="pass">Passwort vergessen?</div>
+        <input type="submit" name="anmelden" value="Login">
+        <div class="signup_link"><?php echo $check; ?></div>
+        <div class="signup_link">
+          Noch kein Account? <a href="signup.php">Registrieren</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

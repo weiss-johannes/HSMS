@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bootstrap.bundle.js"></script>
   </head>
+<?php
+  $check = @$_GET['check'];
+  $check = true;
+?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
         <div class="container-fluid">
@@ -29,20 +33,29 @@
               <li class="nav-item">
                 <a class="nav-link reiter" href="index.php?action=eintragen">Eintragen</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle reiter" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kinder</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="index.php?action=uebersicht">Übersicht</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="index.php?action=aenderungen">Änderungen</a></li>
-                </ul>
-              </li>
+              <?php
+              if ($check) {
+                echo "<li class='nav-item dropdown'>
+                        <a class='nav-link dropdown-toggle reiter' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Kinder</a>
+                        <ul class='dropdown-menu'>
+                          <li><a class='dropdown-item' href='index.php?action=uebersicht'>Übersicht</a></li>
+                          <li><hr class='dropdown-divider'></li>
+                          <li><a class='dropdown-item' href='index.php?action=aenderungen'>Änderungen</a></li>
+                        </ul>
+                      </li> ";
+              }
+              ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-danger" role="button" data-bs-toggle="dropdown" aria-expanded="false">Einstellungen</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item text-danger" href="index.php?action=erstellen">Datenbank erstellen</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="index.php?action=eintragen">Daten eintragen</a></li>
+                  <?php
+                  if ($check) {
+                    echo "
+                      <li><a class='dropdown-item text-danger' href='index.php?action=erstellen'>Datenbank erstellen</a></li>
+                      <li><hr class='dropdown-divider'></li>
+                      <li><a class='dropdown-item' href='index.php?action=eintragen'>Daten eintragen</a></li>";
+                  }
+                  ?>
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
                   <li><a class="dropdown-item" href="login.php">login</a></li>
                 </ul>
@@ -55,13 +68,12 @@
       <section>
         <?php
         $action = @$_GET['action'];
-
         if ($action == 'home') {
-            echo "home";
+          echo "home";
         }
 
         if ($action == 'engel') {
-          require("./w_engel.php");
+          include("./w_engel.php");
         }
 
         if ($action == 'spielzeug') {
