@@ -13,24 +13,24 @@
 
 require("./db_init.php");
 
-$query="SELECT * FROM engel WHERE dienstgrad > 5";
+$query="SELECT * FROM engel WHERE dienstgrad ";
 
 $result = mysqli_query($link, $query);
 
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       echo "Name: " . $row["e_name"]. " - Funktion: " . $row["funktion"]. " dienstgrad " . $row["dienstgrad"]. 
-      " aufgaben " . $row["aufgaben"]. "<br>";
+      " aufgabe " . $row["aufgabe"]. "<br>";
     }
   } else {
     echo "0 ergebnisse";
   }
 
-$query = "ALTER TABLE engel ADD urlaubstage int"; 
+$query = "ALTER TABLE engel ADD COLUMN  IF NOT EXISTS urlaubstage int";
 
 mysqli_query($link, $query);
 
-$query = "ALTER TABLE engel ADD abmahnung varchar(255)"; 
+$query = "ALTER TABLE engel ADD abmahnung varchar(255)";
 
 mysqli_query($link, $query);
 
