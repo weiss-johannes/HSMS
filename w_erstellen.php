@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo/favicon-invert.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Alles f&uuml;r die Clicks</title>
 </head>
 <body>
@@ -91,18 +94,6 @@
     {
         echo "Falsche Kinder";
     }
-
-
-    // /* Verbindung mit der Datenbank herstellen */
-    // if(!mysqli_select_db($link, "weihnachten")){
-    //     echo ("<h2>Konnte Verbindung zur Datenbank <b>weihnachten</b> nicht herstellen<br></h2>");
-    // } else {
-    //     echo "<h2>ಠ_ಠ Verbindung zur Datenbank <b>weihnachten</b> erstellt ಠ_ಠ</h2>";
-    // }
-
 ?>
-
-<a href="w_eintragen.php">Zu eintragen</a>
-
 </body>
 </html>

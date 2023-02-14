@@ -5,16 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spielzeug 🧸</title>
-    <style>
-        .sql-befhel {
-            color: gray;
-            font-family: monospace;
-        }
-    </style>
 </head>
 <body>
 <?php
-    require("./db_in_pruefung.php");
+    require("./db_init.php");
 
     /* **************************** Aufgabe 4a **************************** */
     $sql = "SELECT * FROM spielzeug";
@@ -23,10 +17,8 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4a: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-                <th>
-                    <td>Aufgabe 4a: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-                </th>
                 <tr>
                     <td>id</td>
                     <td>bez</td>
@@ -61,10 +53,8 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4b: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-                <th>
-                    <td>Aufgabe 4b: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-                </th>
                 <tr>
                     <td>id</td>
                     <td>bez</td>
@@ -99,10 +89,8 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4c: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-                <th>
-                    <td>Aufgabe 4c: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-                </th>
                 <tr>
                     <td>id</td>
                     <td>bez</td>
@@ -125,18 +113,24 @@
     }
 
     /* **************************** Aufgabe 4d **************************** */
-    $sql = "SELECT anzahl FROM spielzeug";
+    $sql = "SELECT SUM(anzahl) as anzahl FROM spielzeug";
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4d: <b class='sql-befehl'>$sql</b></h3>";
+        echo "<table>
+                <tr>
+                    <td>anzahl</td>
+                </tr>";
         $fetch = mysqli_query($link, $sql);
         while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
-            $anzahl_ges += $fetch_list['anzahl'];
+            echo '<tr>
+                    <td>'.$fetch_anzahl['anzahl'].'</td>
+                </tr>
+                </table>';
         }
-        echo "<h4>Aufgabe 4d: <b class='sql-befehl'>$sql</b></h4>";
-        echo "Anzahl der vorrätigen Spielzeuge insgesamt: <b>$anzahl_ges</b>";
     }
     
     /* **************************** Aufgabe 4e **************************** */
@@ -146,10 +140,8 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4e: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-            <th>
-                <td>Aufgabe 4e: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-            </th>
             <tr>
                 <td>bez</td>
                 <td>m_alter</td>
@@ -172,10 +164,8 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
+        echo "<h3>Aufgabe 4f: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
-            <th>
-                <td>Aufgabe 4f: ($anzahl) <b class='sql-befehl'>$sql</b></td>
-            </th>
             <tr>
                 <td>anzahl</td>
                 <td>m_alter</td>

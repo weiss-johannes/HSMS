@@ -1,0 +1,30 @@
+
+section, table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    margin: 20px auto;
+}
+
+th {
+    background-color: #3d3d3d;
+}
+
+.reiter {
+    color: black
+}
+
+.reiter:hover {
+    color: gray
+}
+
+.sql-befehl {
+    font-size: large;
+    font-family: monospace;
+}
+
+.navbar-toggler-icon {
+    background-image: url("../img/burger.png");
+}
