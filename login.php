@@ -8,7 +8,7 @@
   <body>
     <div class="center">
       <h1>Login</h1>
-      <form method="post">
+      <form action="./login.php" method="post">
         <div class="txt_field">
           <input type="text" required>
           <span></span>
@@ -28,3 +28,15 @@
     </div>
   </body>
 </html>
+
+<?php
+    require("./db_init.php");
+
+    $sql='CREATE TABLE IF NOT EXISTS login
+        (
+            username varchar(20) NOT NULL,
+            passwort varchar(20) NOT NULL,
+            PRIMARY KEY (passwort)
+        )';
+    $erg = mysqli_query($link, $sql);
+?>
