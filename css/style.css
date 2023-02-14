@@ -24,3 +24,7 @@ th {
     font-size: large;
     font-family: monospace;
 }
+
+.navbar-toggler-icon {
+    background-image: url("../img/burger.png");
+}
