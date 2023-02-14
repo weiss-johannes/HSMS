@@ -113,7 +113,7 @@
     }
 
     /* **************************** Aufgabe 4d **************************** */
-    $sql = "SELECT SUM(anzahl) FROM spielzeug";
+    $sql = "SELECT SUM(anzahl) as anzahl FROM spielzeug";
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
@@ -126,9 +126,10 @@
                 </tr>";
         $fetch = mysqli_query($link, $sql);
         while($fetch_anzahl = mysqli_fetch_assoc($fetch)) {
-            echo "<tr>
-                    <td>$fetch_list[anzahl]</td>
-                </tr>";  
+            echo '<tr>
+                    <td>'.$fetch_anzahl['anzahl'].'</td>
+                </tr>
+                </table>';
         }
     }
     
