@@ -121,10 +121,9 @@
         echo "<h3>Aufgabe 4d: <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
-                    <td>anzahl</td>
-                </tr>";
+                    <td>anzahl</td>";
         while($fetch_anzahl = mysqli_fetch_assoc($erg)) {
-            echo '<tr>
+            echo '
                     <td>'.$fetch_anzahl['anzahl'].'</td>
                 </tr>';
             }

@@ -26,8 +26,9 @@ if ($anzahl == 0)
 else
 {
     echo "<h3>Aufgabe 3a: Urlaubsanspruch haben: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
     echo "<table>
-                <tr><b>
+                <tr>
                     <td>Engel Name</td>
                     <td>Erzengel</td>
                     <td>Dienstgrad</td>
@@ -47,7 +48,6 @@ else
     echo "</table>";
     echo "</div>";
 }
-echo "<hr><hr>";
 
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS urlaubstage int";
@@ -64,7 +64,7 @@ mysqli_query($link, $query);
 
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Antonia' ";
 mysqli_query($link, $query);
-echo "<h3>Aufgabe 3c: Gerüchte eintragen</h3><b>Eintragung bei Antonia und Franz wegen Beziehung";
+echo "<h3>Aufgabe 3c: Gerüchte eintragen</h3>Eintragung bei Antonia und Franz wegen Beziehung";
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Franz' ";
 mysqli_query($link, $query);
 $query = "UPDATE engel SET geruechte = 'Aloisius hat ein Auge auf Magdalena' WHERE e_name = 'Magdalena' ";
@@ -88,6 +88,7 @@ if ($anzahl == 0)
 else
 {
     echo "<h3>Aufgabe 3e: Engel die mit M anfangen: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
     echo "<table>
                 <tr>
                     <td>Engel Name</td>
@@ -130,6 +131,7 @@ if ($anzahl == 0)
 else
 {
     echo "<h3>Aufgabe 3f: Sortierung M/W nach Dienstgrad: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
     echo "<table>
                 <tr>
                     <td>Engel Name</td>
@@ -158,23 +160,27 @@ else
 }
 echo "<hr><hr>";
 
-
-$query = "SELECT COUNT(*) FROM Engel";
+$query = "SELECT COUNT(*) AS Anzahl FROM Engel";
 $result=mysqli_query($link, $query);
-echo "<h3>Aufgabe 3g: Anzahl Engel: <br><b class='sql-befehl'>$query</b></h3>";
-if (mysqli_num_rows($result) > 0) {
-    echo "<table>
-          <tr>
-            <td>Anzahl Engel</td>";
-    while($row = mysqli_fetch_assoc($result)) {
-      echo "
-            <td>".$row['Anzahl']."</td>
-          </tr>";
-    }
-  echo "<table>";
-} else {
+$anzahl = mysqli_affected_rows($link);
+
+  if ($anzahl == 0)
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
-}
+  else
+  {
+    echo "<h3>Aufgabe 3g: Registrierte Engel: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
+    echo "<table>
+    <tr>
+    <td>Engel Name</td>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+      echo "
+      <td>$fetch_list[Anzahl]</td>
+      </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+  }
 
 echo "<hr><hr>";
 
@@ -183,22 +189,30 @@ $query = "SELECT
   COUNT(*) AS Anzahl
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 3, 1)";
-if (mysqli_num_rows($result) > 0) {
-  echo "<table>
-          <tr>
-            <td>Geschlecht</td>
-            <td>Anzahl</td>
-          </tr>";
-    while($row = mysqli_fetch_assoc($result)) {
-      echo "
-          <tr>
-            <td>".$row['Geschlecht']."</td>
-            <td>".$row['Anzahl']."</td>
-          </tr>";
-    }
-  echo "<table>";
-} else {
+$result = mysqli_query($link, $query);
+echo "<h3>Aufgabe 3g: Anzahl Engel: <br><b class='sql-befehl'>$query</b></h3>";
+$anzahl = mysqli_affected_rows($link);
+echo "<hr><hr>";
+
+  if ($anzahl == 0)
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+  else
+  {
+    echo "<h3>Aufgabe 3h: Anzahl Engel männlich und weiblich: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
+      echo "<table>
+              <tr>
+                <td>Engel Geschlecht</td>
+                <td>Engel Anzahl</td>
+              </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+      echo "
+                <td>$fetch_list[Geschlecht]</td>
+                <td>$fetch_list[Anzahl]</td>
+              </tr>";
+    }
+      echo "</table>";
+    echo "</div>";
 }
 echo "<hr><hr>";
 
@@ -217,6 +231,7 @@ else
 {
     echo "<h3>Aufgabe 3i: Geben Sie an, wie viele Engel es von jedem Dienstgrad gibt. Ordnen Sie das Ergebnis
 aufsteigend: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<div>";
     echo "<table>
                 <tr>
                     <td>Dienstgrad</td>

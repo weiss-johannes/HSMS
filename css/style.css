@@ -1,6 +1,6 @@
 
 section, table {
-    width: 80%;
+    width: fit-content;
     margin: 0 auto;
 }
 
@@ -8,8 +8,27 @@ table {
     margin: 20px auto;
 }
 
+tr {
+    border-bottom: 1px solid #adb5bd;
+}
+
+td {
+    padding: 5px;
+    font-size: small;
+    border-right: 1px solid #adb5bd;
+}
+
+tr:first-child td {
+    font-size: medium;
+    font-weight: bold;
+}
+
+td:last-child {
+    border-right: 0px;
+}
+
 nav li {
-    /* margin: 0 50px 0 20px; */
+    margin: 0 10px 0 0;
 }
 
 .reiter {
