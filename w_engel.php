@@ -88,34 +88,31 @@ echo "<hr><hr>";
 
 $query = "SELECT * FROM engel WHERE e_name LIKE 'M%'";
 $result = mysqli_query($link, $query);
-$anzahl = mysqli_affected_rows($link);
 
-if ($anzahl == 0)
-    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
-else
-{
-    echo "<h3>Aufgabe 3e: Engel die mit M anfangen: <br><b class='sql-befehl'>$query</b></h3>";
-    echo "<table>
-                <tr>
-                    <td>Engel Name</td>
-                    <td>Erzengel</td>
-                    <td>Dienstgrad</td>
-                    <td>Funktion</td>
-                    <td>Aufgabe</td>
-
-                </tr>";
-    while($fetch_list = mysqli_fetch_assoc($result)) {
-        echo "<tr>
-                    <td>$fetch_list[e_name]</td>
-                    <td>$fetch_list[erzengel]</td>
-                    <td>$fetch_list[dienstgrad]</td>
-                    <td>$fetch_list[funktion]</td>
-                    <td>$fetch_list[aufgabe]</td>
-                </tr>";
+if (mysqli_num_rows($result) > 0) {
+  echo "<table>
+          <tr>
+            <td>Engel Name</td>
+            <td>Erzengel</td>
+            <td>Dienstgrad</td>
+            <td>Funktion</td>
+            <td>Aufgabe</td>
+          </tr>";
+    while($row = mysqli_fetch_assoc($result)) {
+      echo "
+          <tr>
+            <td>".$row['e_name']."</td>
+            <td>".$row['erzengel']."</td>
+            <td>".$row['dienstgrad']."</td>
+            <td>".$row['funktion']."</td>
+            <td>".$row['aufgabe']."</td>
+          </tr>";
     }
-    echo "</table>";
-    echo "</div>";
+  echo "<table>";
+} else {
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
+
 echo "<hr><hr>";
 
 $query = "SELECT *
@@ -132,7 +129,6 @@ ORDER BY
 $result = mysqli_query($link, $query);
 $anzahl = mysqli_affected_rows($link);
 
-<<<<<<< Updated upstream
 if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
