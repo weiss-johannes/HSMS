@@ -15,6 +15,8 @@
 
     $check = @$_SESSION['check'];
 
+    // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
+    // Ansonsten funktioniert der login nicht.
     // $check = true;
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
