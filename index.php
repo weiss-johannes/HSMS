@@ -15,11 +15,7 @@
 
     $check = @$_SESSION['check'];
 
-<<<<<<< Updated upstream
     //$check = true;
-=======
-    // $check = true;
->>>>>>> Stashed changes
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">

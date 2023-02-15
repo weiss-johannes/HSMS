@@ -12,13 +12,10 @@
     $username = @$_SESSION['username'];
     $password = @$_SESSION['password'];
 
-<<<<<<< Updated upstream
-    $sql = "SELECT * FROM loginUser";
-=======
+    
+    
     require("./db_init.php");
-
-    $sql = "SELECT * FROM login";
->>>>>>> Stashed changes
+    $sql = "SELECT * FROM loginUser";
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
