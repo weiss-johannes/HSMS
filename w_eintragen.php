@@ -19,8 +19,6 @@
 
     include "./db_init.php";
 
-    echo "<hr>Alles ok bei dir?<hr>";
-
     // $einengel="load data infile './csv&txt/engel.csv' into table engel";
     // if(mysqli_query($link,$einengel))
     // {
@@ -31,13 +29,14 @@
     //     echo "nicht ganz richtig<br>";
     // }
 
-
     $csvName="./CSV&TXT/engel.csv";
     $csvDatei=fopen($csvName,'r');
 
+    //fgetcsv gibt 1x Zeile aus der Datei aus
     while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
         $num = count($data);
 
+        //Bei Fehlerhaften Einträgen wird anders Eingetragen
         if($num>5)
         {
             $erstell="INSERT INTO engel VALUES(
@@ -55,20 +54,21 @@
         }
 
         if(mysqli_query($link,$erstell))
-            echo "<hr>Engel ist dring<hr>";
+            echo "<hr>Engel ist drin<hr>";
         else
             echo "<hr>Falsch beim Einfuegen<hr>";
-
     }
 
     fclose($csvDatei);
 
+
     // $line=fgetcsv($csvDatei,300,';');
     
+    // Ändern des Datentypens von Dienstgrad
     $alterEng="ALTER TABLE engel MODIFY dienstgrad varchar(5)";
 
     if(mysqli_query($link,$alterEng))
-        echo "<hr>Typ anders<hr>";
+        echo "<hr>Typ wurde ver&auml;ndert<hr>";
     else
         echo "<hr>Typ wechselt nicht<hr>";
 
