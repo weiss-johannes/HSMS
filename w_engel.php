@@ -1,4 +1,8 @@
-<!-- Autor: WJ Datum erstellung: 10.02.2023 Letztet änderung: 15.02.2023 --!>
+<!--
+    Autor: Simon Kleinschmidt, Alex Glaser, Joseph Weiß
+    erstellt am: 08.02.2023   zuletzt geändert: 15.02.2023
+-->
+
 
 <!DOCTYPE html>
 <html lang="de">
