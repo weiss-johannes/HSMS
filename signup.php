@@ -8,6 +8,8 @@
   <?php
     session_name('login');
     session_start();
+
+    
   ?>
   <body class="body">
     <div class="center">
