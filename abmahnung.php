@@ -31,3 +31,5 @@ $query = "SELECT $engelName FROM engel";
 $query = "UPDATE engel SET dienstgrad = '$dienstgrad', abmahnung = '$grundAbmahnung' WHERE e_name = '".$engelName."'";
 
 $result = mysqli_query($link, $query);
+
+include("./w_engel.php");
