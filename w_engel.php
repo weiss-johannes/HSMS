@@ -1,3 +1,5 @@
+<!-- Autor: WJ Datum erstellung: 10.02.2023 Letztet änderung: 15.02.2023 --!>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -10,13 +12,16 @@
 <body>
 
 <?php
-
+#Verbindung DB
 require("./db_init.php");
 
-$query="SELECT * FROM engel WHERE dienstgrad ";
+
+$query="SELECT * FROM engel WHERE dienstgrad > 5";
 
 $result = mysqli_query($link, $query);
+$anzahl = mysqli_affected_rows($link);
 
+<<<<<<< Updated upstream
 if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
@@ -38,27 +43,58 @@ if (mysqli_num_rows($result) > 0) {
 } else {
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
+=======
+if ($anzahl == 0)
+    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+else
+{
+    echo "<h3>Aufgabe 3a: Urlaubsanspruch haben: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<table>
+                <tr><b>
+                    <td>Engel Name</td>
+                    <td>Erzengel</td>
+                    <td>Dienstgrad</td>
+                    <td>Funktion</td>
+                    <td>Aufgabe</td>
+
+                </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                    <td>$fetch_list[e_name]</td>
+                    <td>$fetch_list[erzengel]</td>
+                    <td>$fetch_list[dienstgrad]</td>
+                    <td>$fetch_list[funktion]</td>
+                    <td>$fetch_list[aufgabe]</td>
+                </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+}
+echo "<hr><hr>";
+
+>>>>>>> Stashed changes
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS urlaubstage int";
-
 mysqli_query($link, $query);
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS abmahnung varchar(255)";
-
 mysqli_query($link, $query);
 
 ?>
 <br>
+<h3>Aufgabe 3b: Abmahnung eintragen</h3>
 <form method="post" action="abmahnung.php">
-<label for="e_name">Name Engel</label>
-<input type="text" name="e_name" id="e_name">
-<label for="grund_abmahung">Grund der abmahnung</label>
-<input type="text" name="grund_abmahung" id="grund_abmahung">
+<label for="e_name">Name Engel:       </label>
+<input type="text" name="e_name" id="e_name"><br>
+<label for="grund_abmahung">Grund der abmahnung:</label>
+<input type="text" name="grund_abmahung" id="grund_abmahung"><br>
 <input type="submit" value="Eintragen">
 <input type="reset" value="Zurücksetzen">
 </form>
 <br>
 <?php
+
+echo "<hr><hr>";
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS geruechte varchar(255)";
 
@@ -66,7 +102,7 @@ mysqli_query($link, $query);
 
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Antonia' ";
 mysqli_query($link, $query);
-echo "Eintragung bei Antonia und Franz wegen Beziehung";
+echo "<h3>Aufgabe 3c: Gerüchte eintragen</h3><b>Eintragung bei Antonia und Franz wegen Beziehung";
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Franz' ";
 mysqli_query($link, $query);
 $query = "UPDATE engel SET geruechte = 'Aloisius hat ein Auge auf Magdalena' WHERE e_name = 'Magdalena' ";
@@ -75,12 +111,43 @@ echo "<br>Eintragung bei Magdalena und Aloisius wegen potentieller Beziehung";
 $query = "UPDATE engel SET geruechte = 'Aloisius hat ein Auge auf Magdalena' WHERE e_name = 'Aloisius' ";
 mysqli_query($link, $query);
 
+echo "<hr><hr>";
 $query = "UPDATE engel SET dienstgrad = dienstgrad + 1 WHERE geruechte IS NULL";
 mysqli_query($link, $query);
-echo "<br>Dienstgraderhöhung bei Engeln mit Gerüchten<br>";
+echo "<h3>Aufgabe 3d: Dienstgraderhöhung bei Engeln mit Gerüchten<br><b class='sql-befehl'>$query</b><br>";
+echo "<hr><hr>";
 
 $query = "SELECT * FROM engel WHERE e_name LIKE 'M%'";
-mysqli_query($link, $query);
+$result = mysqli_query($link, $query);
+$anzahl = mysqli_affected_rows($link);
+
+if ($anzahl == 0)
+    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+else
+{
+    echo "<h3>Aufgabe 3e: Engel die mit M anfangen: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<table>
+                <tr>
+                    <td>Engel Name</td>
+                    <td>Erzengel</td>
+                    <td>Dienstgrad</td>
+                    <td>Funktion</td>
+                    <td>Aufgabe</td>
+
+                </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                    <td>$fetch_list[e_name]</td>
+                    <td>$fetch_list[erzengel]</td>
+                    <td>$fetch_list[dienstgrad]</td>
+                    <td>$fetch_list[funktion]</td>
+                    <td>$fetch_list[aufgabe]</td>
+                </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+}
+echo "<hr><hr>";
 
 $query = "SELECT *
 FROM engel
@@ -90,11 +157,13 @@ ORDER BY
     WHEN SUBSTRING(dienstgrad, 3, 1) = 'w' THEN 2
   END,
   CAST(SUBSTRING(dienstgrad, 1, 1) AS UNSIGNED),
-  SUBSTRING(dienstgrad, 2, 1) ASC
+  SUBSTRING(dienstgrad, 2, 1) DESC 
 ";
 
 $result = mysqli_query($link, $query);
+$anzahl = mysqli_affected_rows($link);
 
+<<<<<<< Updated upstream
 if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
@@ -115,10 +184,45 @@ if (mysqli_num_rows($result) > 0) {
   echo "<table>";
 } else {
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+=======
+if ($anzahl == 0)
+    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+else
+{
+    echo "<h3>Aufgabe 3f: Sortierung M/W nach Dienstgrad: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<table>
+                <tr>
+                    <td>Engel Name</td>
+                    <td>Erzengel</td>
+                    <td>Dienstgrad</td>
+                    <td>Funktion</td>
+                    <td>Aufgabe</td>
+                    <td>Urlaubstrage</td>
+                    <td>Abmahnung</td>
+                    <td>Geruechte</td>
+                </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                    <td>$fetch_list[e_name]</td>
+                    <td>$fetch_list[erzengel]</td>
+                    <td>$fetch_list[dienstgrad]</td>
+                    <td>$fetch_list[funktion]</td>
+                    <td>$fetch_list[aufgabe]</td>
+                    <td>$fetch_list[urlaubstage]</td>
+                    <td>$fetch_list[abmahnung]</td>
+                    <td>$fetch_list[geruechte]</td>
+                </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+>>>>>>> Stashed changes
 }
+echo "<hr><hr>";
+
 
 $query = "SELECT COUNT(*) FROM Engel";
 $result=mysqli_query($link, $query);
+echo "<h3>Aufgabe 3g: Anzahl Engel: <br><b class='sql-befehl'>$query</b></h3>";
 if (mysqli_num_rows($result) > 0) {
     echo "<table>
           <tr>
@@ -133,11 +237,14 @@ if (mysqli_num_rows($result) > 0) {
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
 
+echo "<hr><hr>";
+
 $query = "SELECT
   SUBSTRING(Dienstgrad, 3, 1) AS Geschlecht,
   COUNT(*) AS Anzahl
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 3, 1)";
+<<<<<<< Updated upstream
 if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
@@ -154,7 +261,31 @@ if (mysqli_num_rows($result) > 0) {
   echo "<table>";
 } else {
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+=======
+$result=mysqli_query($link, $query);
+$anzahl = mysqli_affected_rows($link);
+
+if ($anzahl == 0)
+    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+else
+{
+    echo "<h3>Aufgabe 3h: Wie viele Engel sind männlich und wie viele weiblich?: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<table>
+                <tr>
+                    <td>Geschlecht</td>
+                    <td>Anzahl</td>
+                </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                    <td>$fetch_list[Geschlecht]</td>
+                    <td>$fetch_list[Anzahl]</td>
+                </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+>>>>>>> Stashed changes
 }
+echo "<hr><hr>";
 
 $query = "SELECT
   SUBSTRING(Dienstgrad, 1, 1) AS Dienstgrad,
@@ -163,6 +294,7 @@ FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 1, 1)
 ORDER BY Dienstgrad ASC";
 $result=mysqli_query($link, $query);
+<<<<<<< Updated upstream
   if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
@@ -182,6 +314,34 @@ $result=mysqli_query($link, $query);
 }
 
 
+=======
+$anzahl = mysqli_affected_rows($link);
+
+if ($anzahl == 0)
+    echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+else
+{
+    echo "<h3>Aufgabe 3i: Geben Sie an, wie viele Engel es von jedem Dienstgrad gibt. Ordnen Sie das Ergebnis
+aufsteigend: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<table>
+                <tr>
+                    <td>Dienstgrad</td>
+                    <td>Anzahl</td>
+                </tr>";
+    while($fetch_list = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                    <td>$fetch_list[Dienstgrad]</td>
+                    <td>$fetch_list[Anzahl]</td>
+
+                </tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+}
+echo "<hr><hr>";
+
+echo "<h3>Aufgabe 3j: Wie viele Tage bis Weihnachten haben die Engel für ihre Vorbereitungen noch Zeit? </h3>";
+>>>>>>> Stashed changes
 $heute = time(); // aktuelles Datum in Unix-Timestamp-Format
 $weihnachten = strtotime('25 December'); // Weihnachtsdatum in Unix-Timestamp-Format
 $diff_in_sec = $weihnachten - $heute; // Differenz in Sekunden
