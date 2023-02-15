@@ -12,7 +12,7 @@
   <body class="body">
     <div class="center">
       <h1>Registrieren</h1>
-      <form method="POST">
+      <form action="signup.php" method="POST">
         <div class="txt_field">
           <input type="text" required>
           <span></span>

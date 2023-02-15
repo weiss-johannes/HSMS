@@ -34,9 +34,6 @@
               <li class="nav-item">
                 <a class="nav-link reiter" href="index.php?action=spielzeug">Spielzeug</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link reiter" href="index.php?action=eintragen">Eintragen</a>
-              </li>
               <?php
               if ($check) {
                 echo "<li class='nav-item dropdown'>
