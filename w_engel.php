@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <title>🕊Engel</title>
 </head>
+<?php
+    session_name('login');
+    session_start();
+  ?>
 <body>
 
 <?php
