@@ -8,6 +8,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/loginstyle.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Registrieren</title>
   </head>
   <?php

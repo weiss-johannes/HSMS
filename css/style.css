@@ -48,8 +48,18 @@ nav li {
 }
 
 @media (max-width: 800px) {
-    nav {
-        visibility: hidden;
+    body {
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto;
+        height: fit-content;
+        margin-top: 40%;
+    }
+    body::after {
+        content: "Diese Webseite ist nicht für Geräte unter 800px breite gemacht";
+    }
+    .navbar {
+        display: none;
     }
     h1 {
         display: none;
@@ -60,16 +70,13 @@ nav li {
     h3 {
         display: none;
     }
-    body {
-        text-align: center;
-        width: fit-content;
-        margin: 0 auto;
-    }
-    body::after {
-
-        content: "Diese Webseite ist nicht für Mobile gemacht.";
-    }
     table {
+        display: none;
+    }
+    hr {
+        display: none;
+    }
+    p {
         display: none;
     }
 }

@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Spielzeug 🧸</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4a: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4a: ($anzahl)<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
                     <td>id</td>
@@ -49,6 +50,8 @@
         echo "</table>";
     }
     
+    echo "<hr>";
+
     /* **************************** Aufgabe 4b **************************** */
     $sql = "SELECT * FROM spielzeug ORDER BY wert";
     $erg = mysqli_query($link, $sql);
@@ -56,7 +59,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4b: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4b: ($anzahl)<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
                     <td>id</td>
@@ -83,6 +86,8 @@
         echo "</table>";
     }
         
+    echo "<hr>";
+
     /* **************************** Aufgabe 4c **************************** */
     $sql = "SELECT id, bez, wert, m_alter, anzahl FROM spielzeug ORDER BY anzahl";
     $erg = mysqli_query($link, $sql);
@@ -90,7 +95,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4c: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4c: ($anzahl)<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
                     <td>id</td>
@@ -111,6 +116,8 @@
         echo "</table>";
     }
 
+    echo "<hr>";
+
     /* **************************** Aufgabe 4d **************************** */
     $sql = "SELECT SUM(anzahl) as anzahl FROM spielzeug";
     $erg = mysqli_query($link, $sql);
@@ -118,7 +125,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4d: <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4d:<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
                     <td>anzahl</td>";
@@ -129,6 +136,8 @@
             }
             echo '</table>';
     }
+
+    echo "<hr>";
     
     /* **************************** Aufgabe 4e **************************** */
     $sql = "SELECT m_alter, COUNT(DISTINCT bez) as bez_anzahl FROM spielzeug GROUP BY m_alter;";
@@ -137,7 +146,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4e: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4e: ($anzahl)<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
             <tr>
                 <td>bez</td>
@@ -151,6 +160,8 @@
         }
         echo "</table>";
     }
+
+    echo "<hr>";
     
     /* **************************** Aufgabe 4f **************************** */
     $sql = "SELECT m_alter, COUNT(anzahl) as anzahl FROM spielzeug GROUP BY m_alter;";
@@ -159,7 +170,7 @@
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     } else {
-        echo "<h3>Aufgabe 4f: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
+        echo "<h3>Aufgabe 4f: ($anzahl)<br><b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
             <tr>
                 <td>anzahl</td>

@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="./css/loginstyle.css">
+    <link rel="stylesheet" href="./css/style.css">
   </head>
 <?php
     session_name('login');

@@ -25,12 +25,12 @@
     // Ansonsten funktioniert der login nicht.
     // $check = true;
   ?>
-  <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
+  <body style="cursor: url(./img/cursor/kreuz-weiß.svg), auto;">
 
     <!--
       Navigationsbar
     -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; cursor: url(./img/cursor/kreuz-schwarz.svg), auto;">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php?action=home">
 
