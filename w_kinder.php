@@ -68,7 +68,7 @@
         foreach($arr_a as $key=> $value)
         {
             foreach($value as $value2)
-                echo "$value2<br>";
+                echo "<br>$value2";
         }
     }
 
@@ -97,6 +97,7 @@
         echo "Kinder die an Weihnachten Geburtstag haben<br><br>";
     else
         echo "Nicht Weihnachten<br>";
+
 
     while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "  $fetch_list[knr], 
