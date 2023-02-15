@@ -15,7 +15,9 @@
 
     $check = @$_SESSION['check'];
 
-    // $check = true;
+    // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
+    // Ansonsten funktioniert der login nicht.
+    $check = true;
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
@@ -33,9 +35,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link reiter" href="index.php?action=spielzeug">Spielzeug</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link reiter" href="index.php?action=eintragen">Eintragen</a>
               </li>
               <?php
               if ($check) {
