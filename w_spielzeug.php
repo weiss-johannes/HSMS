@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spielzeug 🧸</title>
 </head>
-<?php
-    session_start();
-  ?>
 <body>
 <?php
     require("./db_init.php");

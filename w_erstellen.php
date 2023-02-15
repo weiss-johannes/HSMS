@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Alles f&uuml;r die Clicks</title>
 </head>
-<?php
-    session_start();
-  ?>
 <body>
     
 <h3>( ´･･)ﾉ(._.`)INSTALL( ´･･)ﾉ(._.`)</h3>

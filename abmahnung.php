@@ -1,6 +1,4 @@
 <?php
-  session_start();
-
 require("./db_init.php");
 
 $engelName = $_POST['e_name'];

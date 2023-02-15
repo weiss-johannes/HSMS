@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <title>🕊Engel</title>
 </head>
-<?php
-    session_start();
-  ?>
 <body>
 
 <?php
@@ -21,13 +18,26 @@ $query="SELECT * FROM engel WHERE dienstgrad ";
 $result = mysqli_query($link, $query);
 
 if (mysqli_num_rows($result) > 0) {
+  echo "<table>
+          <tr>
+            <td>Name</td>
+            <td>Funktion</td>
+            <td>dienstgrad</td>
+            <td>aufgabe</td>
+          </tr>";
     while($row = mysqli_fetch_assoc($result)) {
-      echo "Name: " . $row["e_name"]. " - Funktion: " . $row["funktion"]. " dienstgrad " . $row["dienstgrad"]. 
-      " aufgabe " . $row["aufgabe"]. "<br>";
+      echo "
+          <tr>
+            <td>".$row['e_name']."</td>
+            <td>".$row['funktion']."</td>
+            <td>".$row['dienstgrad']."</td>
+            <td>".$row['aufgabe']."</td>
+          </tr>";
     }
-  } else {
-    echo "0 ergebnisse";
-  }
+  echo "<table>";
+} else {
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
+}
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS urlaubstage int";
 
