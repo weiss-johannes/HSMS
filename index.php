@@ -77,7 +77,7 @@
         <?php
         $action = @$_GET['action'];
         
-        echo "Holy Sky Management System"
+        echo "Holy Sky Management System";
 
         // Ausgabe der Session values
         // if ($action == 'home') {

@@ -203,7 +203,6 @@ FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 1, 1)
 ORDER BY Dienstgrad ASC";
 $result=mysqli_query($link, $query);
-<<<<<<< Updated upstream
   if (mysqli_num_rows($result) > 0) {
   echo "<table>
           <tr>
