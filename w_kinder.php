@@ -60,10 +60,10 @@
     echo "<hr>";
 
     // Alle Speciellen Wohnorte
-    $versWohnort="SELECT DISTINCT wohnort From kinder ORDER BY wohnort DESC";
+    $versWohnort="SELECT DISTINCT wohnort From kinder ORDER BY wohnort ASC";
     $arr=mysqli_query($link,$versWohnort);
 
-    echo "<br>Die verschiedenen Wohnorte: ";
+    echo "<br>Die verschiedenen Wohnorte: <br>";
     while($arr_a=mysqli_fetch_all($arr)) {
         foreach($arr_a as $key=> $value)
         {
@@ -142,7 +142,7 @@
         echo "Nicht Charakter<br>";
 
     while($fetch_list = mysqli_fetch_assoc($erg)) {
-            echo "  $fetch_list[knr], 
+            echo "  $fetch_list[knr],
                     $fetch_list[k_name],
                     $fetch_list[vorname],
                     $fetch_list[wohnort],
@@ -155,13 +155,14 @@
     echo "<hr>";
 
 
+    // For-Schleife für die Charakter anzahl
     for($i=1;$i<6;$i++)
     {
         $anzCharakter="SELECT COUNT(charakter) FROM kinder WHERE charakter=$i;";
         if($erg=mysqli_query($link,$anzCharakter))
         {
             $fetch_list = mysqli_fetch_assoc($erg);
-            echo "Anzahl der Kinder mit Charakter $i: ".$fetch_list['COUNT(charakter)']."<br>";
+            echo "Anzahl der Kinder mit Charakter $i: &ensp; ".$fetch_list['COUNT(charakter)']."<br>";
             if($i==5)
             {
                 $counterKinderSpar=$fetch_list['COUNT(charakter)'];
