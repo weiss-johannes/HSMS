@@ -32,7 +32,7 @@ $db_erstell="CREATE DATABASE IF NOT EXISTS $dbase";
     if(!$db_verb=mysqli_select_db($link, $dbase)){
         echo ("Konnte Verbindung zur Datenbank <b>$dbase</b> nicht herstellen<br>");
     } else {
-        echo "<div>Verbindung zur Datenbank $dbase hergestellt.<br></div>";
+       // echo "<div>Verbindung zur Datenbank $dbase hergestellt.<br></div>";
     }
 
 	/* Ausführen einer SQL Anfrage 

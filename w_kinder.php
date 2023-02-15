@@ -33,7 +33,7 @@
         echo "<h3>Aufgabe 5a: ($anzahl) <b class='sql-befehl'>$sql</b></h3>";
         echo "<table>
                 <tr>
-                    <td>id</td>
+                    <td>Id</td>
                     <td>Nachname</td>
                     <td>Vorname</td>
                     <td>Wohnort</td>

@@ -98,11 +98,11 @@
         }
 
         if ($action == 'uebersicht') {
-          require("./w_kinder.php");
+          require("./w_kinderSicht.php");
         }
 
         if ($action == 'aenderungen') {
-            echo "aenderungen";
+          require("./w_kinder.php");
         }
 
         if ($action == 'erstellen') {
