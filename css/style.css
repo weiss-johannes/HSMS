@@ -46,3 +46,30 @@ nav li {
 .navbar-toggler-icon {
     background-image: url("../img/burger.png");
 }
+
+@media (max-width: 800px) {
+    nav {
+        visibility: hidden;
+    }
+    h1 {
+        display: none;
+    }
+    h2 {
+        display: none;
+    }
+    h3 {
+        display: none;
+    }
+    body {
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto;
+    }
+    body::after {
+
+        content: "Diese Webseite ist nicht für Mobile gemacht.";
+    }
+    table {
+        display: none;
+    }
+}
