@@ -7,8 +7,8 @@
   </head>
   <?php
     $_POST = array_map('htmlspecialchars', $_POST);
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = @$_POST['username'];
+    $password = @$_POST['password'];
     $submit = @$_POST['submit'];
     
     if ($submit) {

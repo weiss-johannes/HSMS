@@ -77,12 +77,15 @@
         <?php
         $action = @$_GET['action'];
         
-        if ($action == 'home') {
-          echo "<b><div class='hg'>Ausgabe mit foreach() - Standard</b><br>";
-          foreach ($_SESSION as $key => $value) {
-              echo "<label>" . $key . ":</label> <b>" . $value . "</b><br>";
-          }
-          echo "</div>";
+        echo "Holy Sky Management System"
+
+        // Ausgabe der Session values
+        // if ($action == 'home') {
+        //   echo "<b><div class='hg'>Ausgabe mit foreach() - Standard</b><br>";
+        //   foreach ($_SESSION as $key => $value) {
+        //       echo "<label>" . $key . ":</label> <b>" . $value . "</b><br>";
+        //   }
+        //   echo "</div>";
         }
 
         if ($action == 'engel') {
