@@ -5,23 +5,29 @@
     <title>Login</title>
     <link rel="stylesheet" href="./css/loginstyle.css">
   </head>
-
 <?php
     session_name('login');
     session_start();
-
-    require("./db_init.php");
     $_SESSION = array_map('htmlspecialchars', $_POST);
     $username = @$_SESSION['username'];
     $password = @$_SESSION['password'];
 
+<<<<<<< Updated upstream
     $sql = "SELECT * FROM loginUser";
+=======
+    require("./db_init.php");
+
+    $sql = "SELECT * FROM login";
+>>>>>>> Stashed changes
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3>";
     } else {
         echo "<table>
+                <tr>
+                  <b style='text-align: center; color: white; font-size: 30px;'>Ausgabe der Login Tabelle</b>
+                </tr>
                 <tr>
                     <td>Username</td>
                     <td>Password</td>
@@ -43,7 +49,6 @@
 
 			$abfragee = "SELECT * FROM loginUser";
       $ergebniss = mysqli_query($link, $abfragee);
-
       while ($row = mysqli_fetch_object($ergebniss)) {
         if ($username == $row->username && $password == $row->password) {
           $_SESSION['check'] = true;
@@ -53,14 +58,14 @@
               <body class='body'>
                 <div  style='z-index: 100;' class='center'>
                   <h1>Login</h1>
-                  <form action='login.php' method='post'>
+                  <form action='login.php' method='POST'>
                     <div class='txt_field'>
-                      <input type='text' name='username' required>
+                      <input type='text' name='username' value='$username' required>
                       <span></span>
                       <label>Username</label>
                     </div>
                     <div class='txt_field'>
-                      <input type='password' name='password' required>
+                      <input type='password' name='password' value='$password' required>
                       <span></span>
                       <label>Passwort</label>
                     </div>
@@ -81,7 +86,7 @@
   <body class="body">
     <div class="center">
       <h1>Login</h1>
-      <form action="login.php" method="post">
+      <form action="login.php" method="POST">
         <div class="txt_field">
           <input type="text" name="username" required>
           <span></span>
