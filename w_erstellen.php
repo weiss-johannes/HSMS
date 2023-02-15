@@ -38,7 +38,7 @@
     $drop="DROP TABLE IF EXISTS kinder";
     mysqli_query($link,$drop);
 
-    $sql='DROP TABLE IF EXISTS login';
+    $sql='DROP TABLE IF EXISTS loginUser';
     $erg = mysqli_query($link, $sql);
 
     $erstEngel='CREATE TABLE IF NOT EXISTS engel
@@ -103,7 +103,7 @@
     }
 
     // Tabelle für den Login
-    $sql='CREATE TABLE IF NOT EXISTS login
+    $sql='CREATE TABLE IF NOT EXISTS loginUser
         (
             username varchar(20) NOT NULL,
             password varchar(20) NOT NULL,

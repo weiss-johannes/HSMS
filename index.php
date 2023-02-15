@@ -17,7 +17,7 @@
     $_SESSION['sname'] = session_name();
     $check = @$_SESSION['check'];
 
-    $check = true;
+    //$check = true;
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
