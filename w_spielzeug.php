@@ -7,7 +7,6 @@
     <title>Spielzeug 🧸</title>
 </head>
 <?php
-    session_name('login');
     session_start();
   ?>
 <body>

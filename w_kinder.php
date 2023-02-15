@@ -8,7 +8,6 @@
     <title>🐣Alle meine Kinder schwimmen in dem SEE, SCHwimme iN DEm SeE, HÄndChen aus DEM waSser, Schwänze in die hoe🐤</title>
 </head>
 <?php
-    session_name('login');
     session_start();
   ?>
 <body>

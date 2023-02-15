@@ -8,7 +8,6 @@
     <title>🕊Engel</title>
 </head>
 <?php
-    session_name('login');
     session_start();
   ?>
 <body>
@@ -87,22 +86,41 @@ ORDER BY
 $result = mysqli_query($link, $query);
 
 if (mysqli_num_rows($result) > 0) {
+  echo "<table>
+          <tr>
+            <td>Name</td>
+            <td>Funktion</td>
+            <td>dienstgrad</td>
+            <td>aufgabe</td>
+          </tr>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "Name: " . $row["e_name"]. " - Funktion: " . $row["funktion"]. " dienstgrad " . $row["dienstgrad"].
-            " aufgabe " . $row["aufgabe"]. "<br>";
+      echo "
+          <tr>
+            <td>".$row['e_name']."</td>
+            <td>".$row['funktion']."</td>
+            <td>".$row['dienstgrad']."</td>
+            <td>".$row['aufgabe']."</td>
+          </tr>";
     }
+  echo "<table>";
 } else {
-    echo "0 ergebnisse";
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
 
 $query = "SELECT COUNT(*) FROM Engel";
 $result=mysqli_query($link, $query);
 if (mysqli_num_rows($result) > 0) {
+    echo "<table>
+          <tr>
+            <td>Anzahl Engel</td>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "Anzahl Engel: " . $row["COUNT(*)"] ."<br>";
+      echo "
+            <td>".$row['Anzahl']."</td>
+          </tr>";
     }
+  echo "<table>";
 } else {
-    echo "0 Engel";
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
 
 $query = "SELECT
@@ -110,13 +128,22 @@ $query = "SELECT
   COUNT(*) AS Anzahl
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 3, 1)";
-$result=mysqli_query($link, $query);
 if (mysqli_num_rows($result) > 0) {
+  echo "<table>
+          <tr>
+            <td>Geschlecht</td>
+            <td>Anzahl</td>
+          </tr>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "Geschlecht: " . $row["Geschlecht"]. " - Anzahl: " . $row["Anzahl"] . "<br>";
+      echo "
+          <tr>
+            <td>".$row['Geschlecht']."</td>
+            <td>".$row['Anzahl']."</td>
+          </tr>";
     }
+  echo "<table>";
 } else {
-    echo "0 ergebnisse";
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
 
 $query = "SELECT
@@ -126,13 +153,24 @@ FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 1, 1)
 ORDER BY Dienstgrad ASC";
 $result=mysqli_query($link, $query);
-if (mysqli_num_rows($result) > 0) {
+  if (mysqli_num_rows($result) > 0) {
+  echo "<table>
+          <tr>
+            <td>Dienstgrad</td>
+            <td>Anzahl</td>
+          </tr>";
     while($row = mysqli_fetch_assoc($result)) {
-        echo "Dienstgrad: " . $row["Dienstgrad"]. " - Anzahl: " . $row["Anzahl"] . "<br>";
+      echo "
+          <tr>
+            <td>".$row['Dienstgrad']."</td>
+            <td>".$row['Anzahl']."</td>
+          </tr>";
     }
+  echo "<table>";
 } else {
-    echo "0 ergebnisse";
+  echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 }
+
 
 $heute = time(); // aktuelles Datum in Unix-Timestamp-Format
 $weihnachten = strtotime('25 December'); // Weihnachtsdatum in Unix-Timestamp-Format
