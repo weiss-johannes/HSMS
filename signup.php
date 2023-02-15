@@ -9,10 +9,10 @@
     session_name('login');
     session_start();
   ?>
-  <body>
+  <body class="body">
     <div class="center">
       <h1>Registrieren</h1>
-      <form method="post">
+      <form method="POST">
         <div class="txt_field">
           <input type="text" required>
           <span></span>

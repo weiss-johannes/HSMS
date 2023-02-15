@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "0 ergebnisse";
   }
 
-$query = "ALTER TABLE engel ADD COLUMN  IF NOT EXISTS urlaubstage int";
+$query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS urlaubstage int";
 
 mysqli_query($link, $query);
 

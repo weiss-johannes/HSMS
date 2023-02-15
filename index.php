@@ -15,7 +15,7 @@
 
     $check = @$_SESSION['check'];
 
-    //$check = true;
+    // $check = true;
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
@@ -61,11 +61,11 @@
                   }
                   ?>
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
-                  <li><a class="dropdown-item" href="login.php">login</a></li>
                   <?php
-                  if ($check) {
-                    echo "<li><a class='dropdown-item' href='logoiut.php'>logout</a></li>";
-                  }
+                  if (!$check) { echo "<li><a class='dropdown-item' href='login.php'>login</a></li>"; }
+                  ?>
+                  <?php
+                  if ($check) { echo "<li><a class='dropdown-item' href='logout.php'>logout</a></li>"; }
                   ?>
                 </ul>
               </li>
