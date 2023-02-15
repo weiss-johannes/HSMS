@@ -15,9 +15,9 @@
 
     $_SESSION = array_map('htmlspecialchars', $_POST);
     $_SESSION['sname'] = session_name();
-    $check = $_SESSION['check'];
+    $check = @$_SESSION['check'];
 
-    // $check = true;
+    $check = true;
   ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
@@ -63,7 +63,7 @@
                   }
                   ?>
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
-                  <li><a class="dropdown-item" href="index.php?action=login">login</a></li>
+                  <li><a class="dropdown-item" href="login.php">login</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -112,10 +112,6 @@
                     50% { background-color: red; }
                   }
                 </style>";
-        }
-
-        if ($action == 'login') {
-          require("./login.php");
         }
     ?>
       </section>

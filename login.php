@@ -11,9 +11,9 @@
     session_start();
 
     require("./db_init.php");
-    $_POST = array_map('htmlspecialchars', $_POST);
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $_SESSION = array_map('htmlspecialchars', $_POST);
+    $username = @$_SESSION['username'];
+    $password = @$_SESSION['password'];
 
     $sql = "SELECT * FROM login";
     $erg = mysqli_query($link, $sql);
@@ -45,38 +45,40 @@
       $ergebniss = mysqli_query($link, $abfragee);
 
       while ($row = mysqli_fetch_object($ergebniss)) {
-        if ($username == $row->username and $password == $row->password) {
-          header('Location: index.php?check=true');
+        if ($username == $row->username && $password == $row->password) {
+          $_SESSION['check'] = true;
+          header('Location: index.php');
         } else {
           echo "
-              <div class='center'>
-                <h1>Login</h1>
-                <form action='login.php' method='post'>
-                  <div class='txt_field'>
-                    <input type='text' name='username' required>
-                    <span></span>
-                    <label>Username</label>
-                  </div>
-                  <div class='txt_field'>
-                    <input type='password' name='password' required>
-                    <span></span>
-                    <label>Passwort</label>
-                  </div>
-                  <div class='pass'>Passwort vergessen?</div>
-                  <input type='submit' name='anmelden' value='Login'>
-                  <div class='signup_link'><h3 style='color: red;'>Falsches Passwort oder Name</h3></div>
-                  <div class='signup_link'>
-                    Noch kein Account? <a href='signup.php'>Registrieren</a>
-                  </div>
-                </form>
-              </div>";
-          $check = true;
+              <body class='body'>
+                <div  style='z-index: 100;' class='center'>
+                  <h1>Login</h1>
+                  <form action='login.php' method='post'>
+                    <div class='txt_field'>
+                      <input type='text' name='username' required>
+                      <span></span>
+                      <label>Username</label>
+                    </div>
+                    <div class='txt_field'>
+                      <input type='password' name='password' required>
+                      <span></span>
+                      <label>Passwort</label>
+                    </div>
+                    <div class='pass'>Passwort vergessen?</div>
+                    <input type='submit' name='anmelden' value='Login'>
+                    <div class='signup_link'><h3 style='color: red;'>Falsches Passwort oder Name</h3></div>
+                    <div class='signup_link'>
+                      Noch kein Account? <a href='signup.php'>Registrieren</a>
+                    </div>
+                  </form>
+                </div>
+              </body>";
         }
       }
     }
   }
 ?>
-
+  <body class="body">
     <div class="center">
       <h1>Login</h1>
       <form action="login.php" method="post">
@@ -94,7 +96,8 @@
         <input type="submit" name="anmelden" value="Login">
         <div class="signup_link">
           Noch kein Account? <a href="signup.php">Registrieren</a>
+          <input type="hidden" name="check" value="false">
         </div>
       </form>
     </div>
-</html>
+  </body>
