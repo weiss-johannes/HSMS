@@ -46,4 +46,4 @@ $query = "UPDATE engel SET dienstgrad = '$dienstgrad', abmahnung = '$grundAbmahn
 
 $result = mysqli_query($link, $query);
 
-include("./w_engel.php");
+header('Location: index.php?action=abmahnung');
