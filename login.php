@@ -54,7 +54,7 @@
       while ($row = mysqli_fetch_object($ergebniss)) {
         if ($username == $row->username && $password == $row->password) {
           $_SESSION['check'] = true;
-          header('Location: index.php');
+          header('Location: index.php?action=home');
         } else {
           echo "
               <body class='body'>

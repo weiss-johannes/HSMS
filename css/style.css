@@ -8,6 +8,10 @@ table {
     margin: 20px auto;
 }
 
+nav li {
+    margin: 0 50px 0 20px;
+}
+
 .reiter {
     color: black
 }

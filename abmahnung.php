@@ -3,10 +3,17 @@
     erstellt am: 08.02.2023   zuletzt geändert: 15.02.2023
 -->
 
-<?php
-  session_name('login');
-  session_start();
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <title>🕊Engel</title>
+</head>
 
+<?php
 require("./db_init.php");
 
 $engelName = $_POST['e_name'];
