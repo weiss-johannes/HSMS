@@ -235,8 +235,18 @@
     echo "<hr><hr>";
 
 
+    $insTab="UPDATE kinder SET k_alter = (YEAR(CURRENT_DATE) - YEAR(gebdat)) - (RIGHT(CURRENT_DATE,5) < RIGHT(gebdat,5)) ";
 
-?>
+    if(mysqli_query($link,$insTab))
+    {
+        echo "Alter wurde rein gemacht<br>";
+    }
 
+    echo "<hr><hr>";
+
+    
+    
+    
+    ?>
 </body>
 </html>
