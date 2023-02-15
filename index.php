@@ -9,10 +9,16 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bootstrap.bundle.js"></script>
   </head>
-<?php
-  $check = @$_GET['check'];
-  $check = true;
-?>
+  <?php
+    session_name('login');
+    session_start();
+
+    $_SESSION = array_map('htmlspecialchars', $_POST);
+    $_SESSION['sname'] = session_name();
+    $check = $_SESSION['check'];
+
+    // $check = true;
+  ?>
   <body style="cursor: url(./img/cursor/Christian_cross.svg), auto;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
         <div class="container-fluid">
@@ -57,7 +63,7 @@
                   }
                   ?>
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
-                  <li><a class="dropdown-item" href="login.php">login</a></li>
+                  <li><a class="dropdown-item" href="index.php?action=login">login</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -107,7 +113,11 @@
                   }
                 </style>";
         }
-        ?>
+
+        if ($action == 'login') {
+          require("./login.php");
+        }
+    ?>
       </section>
   </body>
 </html>

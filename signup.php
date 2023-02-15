@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="./css/loginstyle.css">
     <title>Registrieren</title>
   </head>
+  <?php
+    session_name('login');
+    session_start();
+  ?>
   <body>
     <div class="center">
       <h1>Registrieren</h1>

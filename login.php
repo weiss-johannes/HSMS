@@ -7,6 +7,9 @@
   </head>
 
 <?php
+    session_name('login');
+    session_start();
+
     require("./db_init.php");
     $_POST = array_map('htmlspecialchars', $_POST);
     $username = $_POST['username'];
@@ -33,7 +36,7 @@
         echo '</table>';
     }
 
-	if (isset($_POST['anmelden'])) {
+	if (isset($_SESSION['anmelden'])) {
 
 		/************** Abfrage ob überhaupt was übergeben wurde **************/
 		if ($password != "" && $username != "") {
@@ -45,17 +48,38 @@
         if ($username == $row->username and $password == $row->password) {
           header('Location: index.php?check=true');
         } else {
-          $check = "<h3 style='color: red;'>Falsches Passwort oder Name</h3>";
+          echo "
+              <div class='center'>
+                <h1>Login</h1>
+                <form action='login.php' method='post'>
+                  <div class='txt_field'>
+                    <input type='text' name='username' required>
+                    <span></span>
+                    <label>Username</label>
+                  </div>
+                  <div class='txt_field'>
+                    <input type='password' name='password' required>
+                    <span></span>
+                    <label>Passwort</label>
+                  </div>
+                  <div class='pass'>Passwort vergessen?</div>
+                  <input type='submit' name='anmelden' value='Login'>
+                  <div class='signup_link'><h3 style='color: red;'>Falsches Passwort oder Name</h3></div>
+                  <div class='signup_link'>
+                    Noch kein Account? <a href='signup.php'>Registrieren</a>
+                  </div>
+                </form>
+              </div>";
+          $check = true;
         }
       }
     }
   }
 ?>
 
-  <body>
     <div class="center">
       <h1>Login</h1>
-      <form action="./login.php" method="post">
+      <form action="login.php" method="post">
         <div class="txt_field">
           <input type="text" name="username" required>
           <span></span>
@@ -68,11 +92,9 @@
         </div>
         <div class="pass">Passwort vergessen?</div>
         <input type="submit" name="anmelden" value="Login">
-        <div class="signup_link"><?php echo $check; ?></div>
         <div class="signup_link">
           Noch kein Account? <a href="signup.php">Registrieren</a>
         </div>
       </form>
     </div>
-  </body>
 </html>
