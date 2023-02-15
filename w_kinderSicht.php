@@ -36,6 +36,7 @@
                     <td>Geschlecht</td>
                     <td>Geburtsdatum</td>
                     <td>Charakter</td>
+                    <td>Alter</td>
                 </tr>";
         while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "<tr>
@@ -46,6 +47,7 @@
                     <td>$fetch_list[geschlecht]</td>
                     <td>$fetch_list[gebdat]</td>
                     <td>$fetch_list[charakter]</td>
+                    <td>$fetch_list[k_alter]</td>
                 </tr>";  
         }
         echo "</table>";

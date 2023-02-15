@@ -1,4 +1,8 @@
-<!-- Autor: WJ Datum erstellung: 10.02.2023 Letztet änderung: 15.02.2023 -->
+<!--
+    Autor: Simon Kleinschmidt, Alex Glaser, Joseph Weiß
+    erstellt am: 08.02.2023   zuletzt geändert: 15.02.2023
+-->
+
 
 <!DOCTYPE html>
 <html lang="de">
@@ -11,12 +15,13 @@
     <title>🕊Engel</title>
 </head>
 <body>
-
-<?php
+  
+  <?php
 #Verbindung DB
 require("./db_init.php");
 
 
+//Aufgabe 3a
 $query="SELECT * FROM engel WHERE dienstgrad > 5";
 
 $result = mysqli_query($link, $query);
@@ -50,14 +55,16 @@ else
     echo "</div>";
 }
 
-
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS urlaubstage int";
 mysqli_query($link, $query);
 
+echo "<hr>";
+
+
+#Aufgabe 3b
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS abmahnung varchar(255)";
 mysqli_query($link, $query);
 
-echo "<hr>";
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS geruechte varchar(255)";
 
@@ -65,21 +72,26 @@ mysqli_query($link, $query);
 
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Antonia' ";
 mysqli_query($link, $query);
+
+#Aufgabe 3c
 echo "<h3>Aufgabe 3c: Gerüchte eintragen</h3><p>Eintragung bei Antonia und Franz wegen Beziehung</p>";
 $query = "UPDATE engel SET geruechte = 'Franz und Antonia ein Paar sind' WHERE e_name = 'Franz' ";
 mysqli_query($link, $query);
 $query = "UPDATE engel SET geruechte = 'Aloisius hat ein Auge auf Magdalena' WHERE e_name = 'Magdalena' ";
 mysqli_query($link, $query);
-echo "<br><p>Eintragung bei Magdalena und Aloisius wegen potentieller Beziehung</p>";
+echo "<p>Eintragung bei Magdalena und Aloisius wegen potentieller Beziehung</p>";
 $query = "UPDATE engel SET geruechte = 'Aloisius hat ein Auge auf Magdalena' WHERE e_name = 'Aloisius' ";
 mysqli_query($link, $query);
 
 echo "<hr>";
+
+#Aufgabe 3d
 $query = "UPDATE engel SET dienstgrad = dienstgrad + 1 WHERE geruechte IS NULL";
 mysqli_query($link, $query);
 echo "<h3>Aufgabe 3d: Dienstgraderhöhung bei Engeln mit Gerüchten<br><b class='sql-befehl'>$query</b><br>";
 echo "<hr>";
 
+#Aufgabe 3e
 $query = "SELECT * FROM engel WHERE e_name LIKE 'M%'";
 $result = mysqli_query($link, $query);
 $anzahl = mysqli_affected_rows($link);
@@ -113,6 +125,8 @@ else
 }
 echo "<hr>";
 
+
+#Aufgabe 3f
 $query = "SELECT *
 FROM engel
 ORDER BY
@@ -161,6 +175,9 @@ else
 }
 echo "<hr>";
 
+
+#Aufgabe 3g
+
 $query = "SELECT COUNT(*) AS Anzahl FROM Engel";
 $result=mysqli_query($link, $query);
 $anzahl = mysqli_affected_rows($link);
@@ -173,7 +190,7 @@ $anzahl = mysqli_affected_rows($link);
     echo "<div>";
     echo "<table>
     <tr>
-    <td>Engel Name</td>";
+    <td>Anzahl Engel</td>";
     while($fetch_list = mysqli_fetch_assoc($result)) {
       echo "
       <td>$fetch_list[Anzahl]</td>
@@ -185,15 +202,16 @@ $anzahl = mysqli_affected_rows($link);
 
 echo "<hr>";
 
+
+#Aufgabe 3h
+
 $query = "SELECT
   SUBSTRING(Dienstgrad, 3, 1) AS Geschlecht,
   COUNT(*) AS Anzahl
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 3, 1)";
 $result = mysqli_query($link, $query);
-echo "<h3>Aufgabe 3g: Anzahl Engel: <br><b class='sql-befehl'>$query</b></h3>";
 $anzahl = mysqli_affected_rows($link);
-echo "<hr>";
 
   if ($anzahl == 0)
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
@@ -216,6 +234,9 @@ echo "<hr>";
     echo "</div>";
 }
 echo "<hr>";
+
+
+#Aufgabe 3i
 
 $query = "SELECT
   SUBSTRING(Dienstgrad, 1, 1) AS Dienstgrad,
@@ -249,6 +270,9 @@ aufsteigend <br><b class='sql-befehl'>$query</b></h3>";
     echo "</div>";
 }
 echo "<hr>";
+
+
+#Aufgabe 3j
 
 echo "<h3>Aufgabe 3j: Wie viele Tage bis Weihnachten haben die Engel für ihre Vorbereitungen noch Zeit? </h3>";
 $heute = time(); // aktuelles Datum in Unix-Timestamp-Format
