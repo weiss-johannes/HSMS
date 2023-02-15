@@ -96,7 +96,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 $query = "SELECT COUNT(*) FROM Engel";
-$result=($link, $query);
+$result=mysqli_query($link, $query);
 echo mysqli_fetch_assoc($result);
 
 $query = "SELECT
@@ -104,7 +104,7 @@ $query = "SELECT
   COUNT(*) AS Anzahl
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 3, 1)";
-$result=($link, $query);
+$result=mysqli_query($link, $query);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         echo "Geschlecht: " . $row["Geschlecht"]. " - Anzahl: " . $row["Anzahl"] . "<br>";
@@ -119,7 +119,7 @@ $query = "SELECT
 FROM Engel
 GROUP BY SUBSTRING(Dienstgrad, 1, 1)
 ORDER BY Dienstgrad ASC";
-$result=($link, $query);
+$result=mysqli_query($link, $query);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         echo "Dienstgrad: " . $row["Dienstgrad"]. " - Anzahl: " . $row["Anzahl"] . "<br>";

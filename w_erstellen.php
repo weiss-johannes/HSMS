@@ -38,6 +38,9 @@
     $drop="DROP TABLE IF EXISTS kinder";
     mysqli_query($link,$drop);
 
+    $sql='DROP TABLE IF EXISTS login';
+    $erg = mysqli_query($link, $sql);
+    
     $sql='DROP TABLE IF EXISTS loginUser';
     $erg = mysqli_query($link, $sql);
 
