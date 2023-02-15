@@ -146,7 +146,5 @@
 
 ?>
 
-<a href="w_erstellen.php">Zu erstellen</a>
-
 </body>
 </html>

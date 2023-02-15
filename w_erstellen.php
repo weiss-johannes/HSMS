@@ -116,5 +116,6 @@
             echo "<h2>Beim anlegen von der Login-Tabelle ist etwas schief gelaufen :^)</h2>";
         }
 ?>
+
 </body>
 </html>
