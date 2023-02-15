@@ -25,7 +25,7 @@ if ($anzahl == 0)
     echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 else
 {
-    echo "<h3>Aufgabe 3a: Urlaubsanspruch haben: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<h3>Aufgabe 3a: Urlaubsanspruch haben <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
     echo "<table>
                 <tr>
@@ -87,7 +87,7 @@ if ($anzahl == 0)
     echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 else
 {
-    echo "<h3>Aufgabe 3e: Engel die mit M anfangen: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<h3>Aufgabe 3e: Engel die mit M anfangen <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
     echo "<table>
                 <tr>
@@ -130,7 +130,7 @@ if ($anzahl == 0)
     echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
 else
 {
-    echo "<h3>Aufgabe 3f: Sortierung M/W nach Dienstgrad: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<h3>Aufgabe 3f: Sortierung M/W nach Dienstgrad <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
     echo "<table>
                 <tr>
@@ -168,7 +168,7 @@ $anzahl = mysqli_affected_rows($link);
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
   else
   {
-    echo "<h3>Aufgabe 3g: Registrierte Engel: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<h3>Aufgabe 3g: Registrierte Engel <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
     echo "<table>
     <tr>
@@ -198,7 +198,7 @@ echo "<hr><hr>";
   echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
   else
   {
-    echo "<h3>Aufgabe 3h: Anzahl Engel männlich und weiblich: <br><b class='sql-befehl'>$query</b></h3>";
+    echo "<h3>Aufgabe 3h: Anzahl Engel männlich und weiblich <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
       echo "<table>
               <tr>
@@ -230,7 +230,7 @@ if ($anzahl == 0)
 else
 {
     echo "<h3>Aufgabe 3i: Geben Sie an, wie viele Engel es von jedem Dienstgrad gibt. Ordnen Sie das Ergebnis
-aufsteigend: <br><b class='sql-befehl'>$query</b></h3>";
+aufsteigend <br><b class='sql-befehl'>$query</b></h3>";
     echo "<div>";
     echo "<table>
                 <tr>

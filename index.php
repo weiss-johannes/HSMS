@@ -115,8 +115,6 @@
         </div>
       </nav>
 
-      <section>
-
       <!--
         Bag-end Stuff
       -->
@@ -175,6 +173,5 @@
                 </style>";
         }
     ?>
-      </section>
   </body>
 </html>
