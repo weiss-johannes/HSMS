@@ -109,8 +109,7 @@
     $sql='CREATE TABLE IF NOT EXISTS loginUser
         (
             username varchar(20) NOT NULL,
-            password varchar(20) NOT NULL,
-            PRIMARY KEY (password)
+            password varchar(20) NOT NULL
         )';
 
         if(mysqli_query($link, $sql)) {
