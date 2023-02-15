@@ -97,7 +97,13 @@ if (mysqli_num_rows($result) > 0) {
 
 $query = "SELECT COUNT(*) FROM Engel";
 $result=mysqli_query($link, $query);
-echo mysqli_fetch_assoc($result);
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "Anzahl Engel: " . $row["COUNT(*)"] ."<br>";
+    }
+} else {
+    echo "0 Engel";
+}
 
 $query = "SELECT
   SUBSTRING(Dienstgrad, 3, 1) AS Geschlecht,
