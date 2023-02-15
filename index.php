@@ -136,7 +136,7 @@
         }
 
         if ($action == 'engel') {
-          include("./w_engel.php");
+          require("./w_engel.php");
         }
 
         if ($action == 'spielzeug') {
