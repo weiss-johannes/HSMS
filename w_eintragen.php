@@ -138,7 +138,7 @@
             echo "<hr>Falsche Kinder beim Einfuegen<hr>";
     }
     fclose($csvDatei);
-
+    
     
     // Benutzer für die Login-Tabelle hinzufügen
     $insertEng="INSERT INTO loginUser VALUES ('admin','admin')";
