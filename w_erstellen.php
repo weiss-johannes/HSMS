@@ -14,7 +14,6 @@
   ?>
 <body>
     
-
 <h3>( ´･･)ﾉ(._.`)INSTALL( ´･･)ﾉ(._.`)</h3>
 
 <?php
@@ -22,12 +21,14 @@
     include "db_init.php";
 
     /* Verbindung mit der Datenbank herstellen */
-    if(!mysqli_select_db($link, "weihnachten")){
+    if(!mysqli_select_db($link, "weihnachten"))
         echo ("<h2>Konnte Verbindung zur Datenbank <b>weihnachten</b> nicht herstellen<br></h2>");
-    } else {
+    else 
         echo "<h2>ಠ_ಠ Verbindung zur Datenbank <b>weihnachten</b> erstellt ಠ_ಠ</h2>";
-    }
+    
 
+
+    // Entfernen von alten Tabellen
     $drop="DROP TABLE IF EXISTS engel ";
     mysqli_query($link,$drop);
 
@@ -43,6 +44,8 @@
     $sql='DROP TABLE IF EXISTS loginUser';
     $erg = mysqli_query($link, $sql);
 
+
+    // Erstellen neuer Tabellen
     $erstEngel='CREATE TABLE IF NOT EXISTS engel
         (
             e_name varchar(20) NOT NULL,
@@ -53,13 +56,11 @@
             PRIMARY KEY (e_name)            
         )';
 
-        // IN CSV e_name;Erzengel;dienstgrad;funktion;aufgabe 
-        // bei Gabriel gesamt leiter weihnachten ohne ;
+    // IN CSV e_name;Erzengel;dienstgrad;funktion;aufgabe 
+    // bei Gabriel gesamt leiter weihnachten ohne ;
 
     if(mysqli_query($link,$erstEngel))
-    {
         echo "<h2>(❁´◡`❁)ENGEL SIND ZU UNS GEKOMMEN(❁´◡`❁)</h2>";
-    }
 
     $erstSpiel='CREATE TABLE IF NOT EXISTS spielzeug
         (
@@ -74,12 +75,13 @@
             PRIMARY KEY (id)            
         )';
 
-        // IN CSV id;bez;wert;laenge;breite;hoehe;m_alter;anzahl
+    // IN CSV id;bez;wert;laenge;breite;hoehe;m_alter;anzahl
 
     if(mysqli_query($link,$erstSpiel))
-    {
         echo "<h2>(⊙_⊙;) EINFACH SPIELZEUG-MACHER (⊙_⊙;)</h2>";
-    }
+    else
+        echo "Falsche Spielzeuge";
+
 
     $erstKind='CREATE TABLE IF NOT EXISTS kinder
         (
@@ -93,16 +95,12 @@
             PRIMARY KEY (knr)            
         )';
 
-        // IN CSV knr;k_name;vorname;wohnort;geschlecht;gebdat;charakter
+    // IN CSV knr;k_name;vorname;wohnort;geschlecht;gebdat;charakter
 
     if(mysqli_query($link,$erstKind))
-    {
-        echo "<h2>¯\_(ツ)_/¯MEINE SIND SIE NICHT¯\_(ツ)_/¯</h2>";
-    }
+        echo "<h2>¯\_(ツ)_/¯MEINE Kinder SIND SIE NICHT¯\_(ツ)_/¯</h2>";
     else
-    {
         echo "Falsche Kinder";
-    }
 
     // Tabelle für den Login
     $sql='CREATE TABLE IF NOT EXISTS loginUser
@@ -111,11 +109,10 @@
             password varchar(20) NOT NULL
         )';
 
-        if(mysqli_query($link, $sql)) {
+        if(mysqli_query($link, $sql))
             echo "<h2>Login Tabelle wurde angelegt</h2>";
-        } else {
+        else
             echo "<h2>Beim anlegen von der Login-Tabelle ist etwas schief gelaufen :^)</h2>";
-        }
 ?>
 
 </body>

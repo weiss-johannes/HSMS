@@ -21,6 +21,7 @@
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
 
+    // Zählervariablen für späteren gebrauch
     $counterKinder=0;
     $counterKinderSpäter=0;
 
@@ -55,21 +56,22 @@
         echo "</table>";
         echo "</div>";
     }
-    echo "<hr><hr>";
+    echo "<hr>";
 
-
-    $versWohnort="SELECT DISTINCT wohnort From kinder";
+    // Alle Speciellen Wohnorte
+    $versWohnort="SELECT DISTINCT wohnort From kinder ORDER BY wohnort DESC";
     $arr=mysqli_query($link,$versWohnort);
 
-
+    echo "<br>Die verschiedenen Wohnorte: ";
     while($arr_a=mysqli_fetch_all($arr)) {
         foreach($arr_a as $key=> $value)
         {
             foreach($value as $value2)
-            echo "Wohnort: $value2<br>";
+                echo "$value2<br>";
         }
     }
 
+    // Falls ungerade Anzahl an Kindern aufrunden(wahrscheinlich einfacher möglich)
     if($counterKinder%3==1)
     {
         $counterKinder/=3;
@@ -81,24 +83,20 @@
         $counterKinder+=(1/3);
     }
     else
-    {
         $counterKinder/=3;
-    }
 
-    echo "<hr>";
-    
+
+    // Anzahl der benötigten Engel
     echo "<hr>Es werden $counterKinder Engel benötigt<hr>";
-    echo "<hr>";
+    
 
+    // Gibt alle Kinder aus die an Weihnachten geboren wurden aus
     $gebWeihnacht="SELECT * FROM kinder WHERE gebdat LIKE '%12-24'";
     if($erg=mysqli_query($link,$gebWeihnacht))
-    {
         echo "Kinder die an Weihnachten Geburtstag haben<br><br>";
-    }
     else
-    {
         echo "Nicht Weihnachten<br>";
-    }
+
     while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "  $fetch_list[knr], 
                     $fetch_list[k_name],
@@ -110,17 +108,16 @@
                 <br>";  
         }
         
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Gibt alle Kinder die im December geboren sind aus
     $gebDecember="SELECT * FROM kinder WHERE gebdat LIKE '%12%'";
     if($erg=mysqli_query($link,$gebDecember))
-    {
         echo "Kinder die im December gerboren sind<br><br>";
-    }
     else
-    {
         echo "Nicht December<br>";
-    }
+
     while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "  $fetch_list[knr], 
                     $fetch_list[k_name],
@@ -132,17 +129,16 @@
                 <br>";  
         }
 
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Gibt alle Kinder die einen Charakter schlechter als 3 haben aus
     $charakter3="SELECT * FROM kinder WHERE charakter>=3 ORDER BY charakter DESC";
     if($erg=mysqli_query($link,$charakter3))
-    {
-        echo "Kinder die bei Charakter besser als drei sind.<br><br>";
-    }
+        echo "Kinder die bei Charakter schlechter als drei sind.<br><br>";
     else
-    {
         echo "Nicht Charakter<br>";
-    }
+
     while($fetch_list = mysqli_fetch_assoc($erg)) {
             echo "  $fetch_list[knr], 
                     $fetch_list[k_name],
@@ -154,8 +150,8 @@
                 <br>";  
         }
 
+    echo "<hr>";
 
-    echo "<hr><hr>";
 
     for($i=1;$i<6;$i++)
     {
@@ -171,10 +167,11 @@
         }
     }
     
-    echo "<hr><hr>";
+    echo "<hr>";
     
     $counterKinderSpäter-=$counterKinderSpar;
-
+    
+    // Falls ungerade Anzahl an Kindern aufrunden(wahrscheinlich einfacher möglich)
     if($counterKinderSpäter%3==1)
     {
         $counterKinderSpäter/=3;
@@ -186,66 +183,67 @@
         $counterKinderSpäter+=(1/3);
     }
     else
-    {
         $counterKinderSpäter/=3;
-    }
 
     $counterKinder-=$counterKinderSpäter;
 
+    
+    // Engel die jez gebraucht werden und gesparte
     echo "Es werden nur noch $counterKinderSpäter Engel benötigt<br>";
     echo "Es wurden $counterKinder Engel gespart";
     
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Datum eines Kindes verbessert
     $updKind="UPDATE kinder SET gebdat='2004-09-30' WHERE knr=14";
-
     if(mysqli_query($link,$updKind))
-    {
         echo "Kind wurde ausgebessert<br>";
-    }
+    else
+        echo "Kind war gut genug";
 
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Wohnort der Familie ausgebessert
     $updFam="UPDATE kinder SET wohnort='Traunstein' WHERE k_name='Mayer'";
-
     if(mysqli_query($link,$updFam))
-    {
         echo "Familie wurde ausgebessert<br>";
-    }
+    else
+        echo "Kind war gut genug";
 
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Unterdupfing ist böse 
     $updUnt="UPDATE kinder SET charakter=5 WHERE wohnort='Unterdupfing'";
-
     if(mysqli_query($link,$updUnt))
-    {
-        echo "Unterdumpfing wurde ausgemerzt<br>";
-    }
+        echo "Unterdupfing wurde ausgemerzt<br>";
+    else
+        echo "Unterdupfing war gut genug";
 
-    echo "<hr><hr>";
+    echo "<hr>";
 
+
+    // Kind können jetzt alt werden
     $altTab="ALTER TABLE kinder ADD k_alter smallint(2)";
-
     if(mysqli_query($link,$altTab))
-    {
-        echo "Tabelle wurde anders gemacht<br>";
-    }
+        echo "Tabelle wurde umge&auml;ndert<br>";
+    else
+        echo "Tabelle wurde schon ver&auml;ndert";
+    
+    echo "<hr>";
 
-    echo "<hr><hr>";
 
-
+    // Tabelle mit Alter befüllen
     $insTab="UPDATE kinder SET k_alter = (YEAR(CURRENT_DATE) - YEAR(gebdat)) - (RIGHT(CURRENT_DATE,5) < RIGHT(gebdat,5)) ";
-
     if(mysqli_query($link,$insTab))
-    {
-        echo "Alter wurde rein gemacht<br>";
-    }
+        echo "Alter wurde eingef&uuml;gt<br>";
+    else
+        echo "Alter wurde nicht berechnet";
 
-    echo "<hr><hr>";
+    echo "<hr>";
 
-    
-    
-    
     ?>
 </body>
 </html>

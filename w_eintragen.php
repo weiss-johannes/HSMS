@@ -71,22 +71,26 @@
     else
         echo "<hr>Typ wechselt nicht<hr>";
 
+
+    // Einfügen des männlichen Geschlechts
     $updateEng="UPDATE engel SET dienstgrad = CONCAT(dienstgrad,'(m)')";
 
     if(mysqli_query($link,$updateEng))
-        echo "<hr>Alles männer hier<hr>";
+        echo "<hr>M&auml;nnlich zu Dienstgrad hinzugef&uuml;gt<hr>";
     else
-        echo "<hr>Nicht ganz so männlich<hr>";
+        echo "<hr>Nicht ganz so m&auml;nnlich<hr>";
 
+
+    // Einfügen der Weiblichen-Engel
     $insertEng="INSERT INTO engel (e_name,dienstgrad,funktion,aufgabe) VALUES
         ('Antonia','5(w)','Köchin','Kochen'),('Miranda','3(w)','Reinigungskraft','Böden wischen, Staub saugen'),
         ('Anastasia','6(w)','Chef-Sekretärin','Korrespondenz, Repräsentationsaufgaben'),('Magdalena','4(w)','Sekretärin','Büroarbeiten erledigen'),
         ('Notburga','2(w)','Gärtnerin','Gemüse pflegen')";
 
     if(mysqli_query($link,$insertEng))
-        echo "<hr>Erfolgreich Weiblich drin<hr>";
+        echo "<hr>Erfolgreich weibliche Engel drin<hr>";
     else
-        echo "<hr>Keine Weiblich drin<hr>";
+        echo "<hr>Keine Weiblichen drin<hr>";
 
 
     // $einkind="load data infile './csv&txt/empfaenger.csv' into table kinder";
@@ -96,9 +100,10 @@
     //     echo "nicht kinder richtig<br>";
 
 
+    // Spielzeug mittels fgetcsv befühlt
     $Datei_name="./CSV&TXT/geschenke.csv";
     $Tabllen_name='spielzeug';
-
+    
     $csvDatei=fopen($Datei_name,'r');
 
     while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
@@ -107,37 +112,40 @@
             \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\",\"$data[7]\")";
     
         if(mysqli_query($link,$erstell))
-            echo "<hr>$Tabllen_name ist drin<hr>";
+            echo "<hr>Spielzeug ist drin<hr>";
         else
-            echo "<hr>Falsch beim Einfuegen<hr>";
+            echo "<hr>Falsch Spielzeuge beim Einfuegen<hr>";
         }
+    fclose($csvDatei);
 
-        fclose($csvDatei);
 
-        $Datei_name="./CSV&TXT/empfaenger.csv";
-        $Tabllen_name='kinder';
+
+    // Kinder mittels fgetcsv befühlt
+    $Datei_name="./CSV&TXT/empfaenger.csv";
+    $Tabllen_name='kinder';
     
-        $csvDatei=fopen($Datei_name,'r');
+    $csvDatei=fopen($Datei_name,'r');
     
-        while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
+    while (($data = fgetcsv($csvDatei, 1000, ";")) !== FALSE) {
     
-            $erstell="INSERT INTO $Tabllen_name VALUES(
-                \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
+        $erstell="INSERT INTO $Tabllen_name VALUES(
+            \"$data[0]\",\"$data[1]\",\"$data[2]\",\"$data[3]\",\"$data[4]\",\"$data[5]\",\"$data[6]\")";
         
-            if(mysqli_query($link,$erstell))
-                echo "<hr>$Tabllen_name ist drin<hr>";
-            else
-                echo "<hr>Falsch beim Einfuegen<hr>";
-            }
-    
-            fclose($csvDatei);
-
-        $insertEng="INSERT INTO loginUser VALUES ('admin','admin')";
-    
-        if(mysqli_query($link,$insertEng))
-            echo "<hr>Erfolgreich Admin drin<hr>";
+        if(mysqli_query($link,$erstell))
+            echo "<hr>Kind ist drin<hr>";
         else
-            echo "<hr>Keine Admin drin<hr>";
+            echo "<hr>Falsche Kinder beim Einfuegen<hr>";
+    }
+    fclose($csvDatei);
+    
+    
+    // Benutzer für die Login-Tabelle hinzufügen
+    $insertEng="INSERT INTO loginUser VALUES ('admin','admin')";
+    
+    if(mysqli_query($link,$insertEng))
+        echo "<hr>Erfolgreich Admin drin<hr>";
+    else
+        echo "<hr>Keine Admin drin<hr>";
     
 
     
