@@ -133,6 +133,14 @@
     
             fclose($csvDatei);
 
+        $insertEng="INSERT INTO loginUser VALUES
+            ('admin','admin')";
+    
+        if(mysqli_query($link,$insertEng))
+            echo "<hr>Erfolgreich Admin drin<hr>";
+        else
+            echo "<hr>Keine Admin drin<hr>";
+    
 
     
 

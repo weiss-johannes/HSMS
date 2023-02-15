@@ -15,7 +15,7 @@
     $username = @$_SESSION['username'];
     $password = @$_SESSION['password'];
 
-    $sql = "SELECT * FROM login";
+    $sql = "SELECT * FROM loginUser";
     $erg = mysqli_query($link, $sql);
     $anzahl = mysqli_affected_rows($link);
     if ($anzahl == 0) {
@@ -41,7 +41,7 @@
 		/************** Abfrage ob überhaupt was übergeben wurde **************/
 		if ($password != "" && $username != "") {
 
-			$abfragee = "SELECT * FROM login";
+			$abfragee = "SELECT * FROM loginUser";
       $ergebniss = mysqli_query($link, $abfragee);
 
       while ($row = mysqli_fetch_object($ergebniss)) {
