@@ -48,7 +48,7 @@
                     <td>$fetch_list[geschlecht]</td>
                     <td>$fetch_list[gebdat]</td>
                     <td>$fetch_list[charakter]</td>
-                    try<td>@$fetch_list[k_alter]</td>
+                    <td>" . @$fetch_list['k_alter'] . "</td>
                 </tr>";  
         }}
         catch (Exception $e) {
