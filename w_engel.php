@@ -65,6 +65,20 @@ echo "<hr>";
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS abmahnung varchar(255)";
 mysqli_query($link, $query);
 
+?>
+<br>
+<h3>Aufgabe 3b: Abmahnung eintragen</h3>
+<form method="post" action="abmahnung.php">
+<label for="e_name">Name Engel:</label>
+<input type="text" name="e_name" id="e_name"><br><br>
+<label for="grund_abmahung">Grund der abmahnung:</label>
+<input type="text" name="grund_abmahung" id="grund_abmahung"><br><br>
+<label></label>
+<input type="submit" value="Eintragen">
+<input type="reset" value="Zurücksetzen">
+</form>
+<br>
+<?php
 
 $query = "ALTER TABLE engel ADD COLUMN IF NOT EXISTS geruechte varchar(255)";
 

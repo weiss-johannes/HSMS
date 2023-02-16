@@ -18,7 +18,6 @@
   <?php
     session_name('login');
     session_start();
-
     $check = @$_SESSION['check'];
 
     // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
@@ -82,7 +81,7 @@
                   <?php
 
                   //
-                  // Admin comands
+                  // Anzeigen wenn angemeldet
                   //
                   if ($check) {
                     echo "
@@ -93,7 +92,7 @@
                   ?>
 
                   <!--
-                    Alex´s Spielzeug
+                    Alex´s Spielzeug (Bitte nicht beachten)
                   -->
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
 
@@ -101,10 +100,8 @@
                     Login/out
                   -->
                   <?php
-                  if (!$check) { echo "<li><a class='dropdown-item' href='login.php'>login</a></li>"; }
-                  ?>
-                  <?php
-                  if ($check) { echo "<li><a class='dropdown-item' href='logout.php'>logout</a></li>"; }
+                  if (!$check) echo "<li><a class='dropdown-item' href='login.php'>login</a></li>";
+                  if ($check) echo "<li><a class='dropdown-item' href='logout.php'>logout</a></li>";
                   ?>
 
                 </ul>
@@ -122,7 +119,8 @@
         $action = @$_GET['action'];
         
         if ($action == 'home') {
-        echo "Holy Sky Management System";
+        echo "<h1>Holy <br><span style='width: fit-content; filter: brightness(200%);background: linear-gradient(75deg,#39d7ff, #0000ff);
+        -webkit-background-clip: text;-webkit-text-fill-color: transparent;'>Sky</span> <br>Management <br>System</h1>";
 
         // Ausgabe der Session values
         // if ($action == 'home') {
@@ -135,7 +133,7 @@
 
         if ($action == 'engel') {
           require("./w_engel.php");
-        }
+        } 
 
         if ($action == 'spielzeug') {
           require("./w_spielzeug.php");

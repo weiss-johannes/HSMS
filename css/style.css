@@ -1,3 +1,21 @@
+body {
+    height: 100vh;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: 600;
+    width: fit-content;
+    margin: 50px auto 0 auto;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 11rem;
+}
+
 table {
     width: fit-content;
     margin: 20px auto;
@@ -5,6 +23,11 @@ table {
 
 tr {
     border-bottom: 1px solid #adb5bd;
+}
+
+tr:first-child td {
+    font-size: medium;
+    font-weight: bold;
 }
 
 tr:last-child {
@@ -15,11 +38,6 @@ td {
     padding: 5px;
     font-size: small;
     border-right: 1px solid #adb5bd;
-}
-
-tr:first-child td {
-    font-size: medium;
-    font-weight: bold;
 }
 
 td:last-child {

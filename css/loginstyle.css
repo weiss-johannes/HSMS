@@ -5,9 +5,36 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-section, table {
-  width: 35%;
-  margin: 0;
+table {
+  width: fit-content !important;
+  margin: 0 !important;
+}
+
+tr {
+  border-bottom: 1px solid #adb5bd !important;
+}
+
+tr:first-child td {
+  border-bottom: 1px solid #adb5bd !important;
+}
+
+tr:last-child {
+  border-bottom: 0 !important;
+}
+
+td {
+  padding: 5px !important;
+  font-size: small !important;
+  border-right: 1px solid #adb5bd !important;
+}
+
+tr:first-child td {
+  font-size: medium !important;
+  font-weight: bold !important;
+}
+
+td:last-child {
+  border-right: 0px !important;
 }
 .body{
   margin: 0;
