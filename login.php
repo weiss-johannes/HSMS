@@ -17,7 +17,6 @@
     $_SESSION = array_map('htmlspecialchars', $_POST);
     $username = @$_SESSION['username'];
     $password = @$_SESSION['password'];
-
     
     
     require("./db_init.php");

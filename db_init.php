@@ -28,8 +28,8 @@ mysqli_options($link,MYSQLI_INIT_COMMAND,'SET NAMES \'utf8\'');
     } else {
         //echo "Verbindung zum Server $server hergestellt.<br>";
     }
-
-$db_erstell="CREATE DATABASE IF NOT EXISTS $dbase";
+    
+    $db_erstell="CREATE DATABASE IF NOT EXISTS $dbase";
     if(mysqli_query($link,$db_erstell))
         //echo "Datenbank wurde erstellt, da noch nicht vorhanden<br>";
 

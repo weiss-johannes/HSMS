@@ -19,7 +19,6 @@
     session_name('login');
     session_start();
     $check = @$_SESSION['check'];
-    require_once("login-tab.php");
     // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
     // Ansonsten funktioniert der login nicht.
     // $check = true;
@@ -53,9 +52,12 @@
               <li class="nav-item">
                 <a class="nav-link reiter" href="index.php?action=spielzeug">Spielzeug</a>
               </li>
-
               <?php
-
+              if (!$check) {
+                echo "<li class='nav-item'>
+                  <a class='nav-link reiter' href='index.php?action=login'>Login Tabelle anlegen</a>
+                </li>";
+              }
               // 
               // Exclusiv Content für Angemeldete
               //
@@ -137,6 +139,10 @@
 
         if ($action == 'spielzeug') {
           require("./w_spielzeug.php");
+        }
+
+        if ($action == 'login') {
+          include("./login-tab.php");
         }
 
         if ($action == 'eintragen') {
