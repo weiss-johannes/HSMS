@@ -27,6 +27,7 @@
         echo "<h3 style='color: red;'>Keine Datensätze gefunden</h3><br>";
     else 
     {
+        try{
         echo "<table>
                 <tr>
                     <td>Id</td>
@@ -47,9 +48,33 @@
                     <td>$fetch_list[geschlecht]</td>
                     <td>$fetch_list[gebdat]</td>
                     <td>$fetch_list[charakter]</td>
-                    <td>$fetch_list[k_alter]</td>
+                    try<td>@$fetch_list[k_alter]</td>
                 </tr>";  
-        }
+        }}
+        catch (Exception $e) {
+            echo "<table>
+            <tr>
+                <td>Id</td>
+                <td>Nachname</td>
+                <td>Vorname</td>
+                <td>Wohnort</td>
+                <td>Geschlecht</td>
+                <td>Geburtsdatum</td>
+                <td>Charakter</td>
+            </tr>";
+            while($fetch_list = mysqli_fetch_assoc($erg)) {
+            echo "<tr>
+                <td>$fetch_list[knr]</td>
+                <td>$fetch_list[k_name]</td>
+                <td>$fetch_list[vorname]</td>
+                <td>$fetch_list[wohnort]</td>
+                <td>$fetch_list[geschlecht]</td>
+                <td>$fetch_list[gebdat]</td>
+                <td>$fetch_list[charakter]</td>
+            </tr>";  
+    }
+}
+        
         echo "</table>";
         echo "</div>";
     }
