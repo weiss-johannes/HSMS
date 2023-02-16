@@ -140,18 +140,6 @@
             echo "<hr>Falsche Kinder beim Einfuegen<hr>";
     }
     fclose($csvDatei);
-    
-    
-    // Benutzer für die Login-Tabelle hinzufügen
-    $insertEng="INSERT INTO loginUser VALUES ('admin','admin')";
-    
-    if(mysqli_query($link,$insertEng))
-        echo "<hr>Erfolgreich Admin drin<hr>";
-    else
-        echo "<hr>Keine Admin drin<hr>";
-    
-
-    
 
     // $eingeschenk="LOAD DATA INFILE './csv&txt/geschenke.csv' into table spielzeug";
     // if(mysqli_query($link,$eingeschenk))

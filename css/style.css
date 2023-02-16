@@ -88,6 +88,12 @@ nav li {
     h3 {
         display: none;
     }
+    form {
+        display: none;
+    }
+    label {
+        display: none;
+    }
     table {
         display: none;
     }

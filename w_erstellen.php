@@ -40,12 +40,6 @@
     $drop="DROP TABLE IF EXISTS kinder";
     mysqli_query($link,$drop);
 
-    $sql='DROP TABLE IF EXISTS login';
-    $erg = mysqli_query($link, $sql);
-    
-    $sql='DROP TABLE IF EXISTS loginUser';
-    $erg = mysqli_query($link, $sql);
-
 
     // Erstellen neuer Tabellen
     $erstEngel='CREATE TABLE IF NOT EXISTS engel
@@ -103,18 +97,6 @@
         echo "<h2>¯\_(ツ)_/¯MEINE Kinder SIND SIE NICHT¯\_(ツ)_/¯</h2>";
     else
         echo "Falsche Kinder";
-
-    // Tabelle für den Login
-    $sql='CREATE TABLE IF NOT EXISTS loginUser
-        (
-            username varchar(20) NOT NULL,
-            password varchar(20) NOT NULL
-        )';
-
-        if(mysqli_query($link, $sql))
-            echo "<h2>Login Tabelle wurde angelegt</h2>";
-        else
-            echo "<h2>Beim anlegen von der Login-Tabelle ist etwas schief gelaufen :^)</h2>";
 ?>
 
 </body>

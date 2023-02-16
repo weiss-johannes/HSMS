@@ -19,10 +19,10 @@
     session_name('login');
     session_start();
     $check = @$_SESSION['check'];
-
+    require_once("login-tab.php");
     // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
     // Ansonsten funktioniert der login nicht.
-    $check = true;
+    // $check = true;
   ?>
   <body style="cursor: url(./img/cursor/kreuz-weiß.svg), auto;">
 
