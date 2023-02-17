@@ -19,9 +19,6 @@
     session_name('login');
     session_start();
     $check = @$_SESSION['check'];
-    // Check bitte auskommentieren, sobald die Datenbank erstellt und werte eingetragen wurden.
-    // Ansonsten funktioniert der login nicht.
-    // $check = true;
   ?>
   <body style="cursor: url(./img/cursor/kreuz-weiß.svg), auto;">
 
@@ -79,25 +76,24 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-danger" role="button" data-bs-toggle="dropdown" aria-expanded="false">Einstellungen</a>
                 <ul class="dropdown-menu">
-
                   <?php
-
                   //
                   // Anzeigen wenn angemeldet
                   //
                   if ($check) {
                     echo "
-                      <li><a class='dropdown-item text-danger' href='index.php?action=erstellen'>Datenbank erstellen</a></li>
+                      <li><a class='dropdown-item text-success' href='index.php?action=erstellen'>Datenbank erstellen</a></li>
                       <li><hr class='dropdown-divider'></li>
                       <li><a class='dropdown-item' href='index.php?action=eintragen'>Daten eintragen</a></li>";
                   }
                   ?>
-
                   <!--
                     Alex´s Spielzeug (Bitte nicht beachten)
                   -->
                   <li><a class="dropdown-item" href="index.php?action=something">Something else here</a></li>
-
+                  <li>
+                    <a class='dropdown-item text-danger' href='index.php?action=löschen'>Datenbank löschen</a>
+                  </li>
                   <!--
                     Login/out
                   -->
@@ -143,6 +139,10 @@
 
         if ($action == 'login') {
           include("./login-tab.php");
+        }
+
+        if ($action == 'löschen') {
+          require("drop-db.php");
         }
 
         if ($action == 'eintragen') {
